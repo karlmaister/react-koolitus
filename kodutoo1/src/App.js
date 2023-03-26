@@ -1,14 +1,34 @@
-import logo from './logo.svg';
+
 import './App.css';
+import { Routes, Route, Link } from 'react-router-dom';
+import Avaleht from './pages/Avaleht';
+import Kontakt from './pages/Kontakt';
+import Meist from './pages/Meist';
 
 function App() {
   return (
-    <div className="App">
-       Guugelda CSS-i (märksõnadega näiteks: „css make text underline“ / „css align text right“ / „css change … „ /
-      <button class="nupp">NUPP</button>
-      <p class="tekst"><em>TEKST</em></p>
-      <p class="green">ROHELINE TEKST</p>
-      <img class="pilt" src="https://www.bmw.ee/content/dam/bmw/common/all-models/m-series/m8-gran-coupe/2022/navigation/bmw-m8-competition-gran-coupe-modelfinder.png" alt="" />
+    
+    
+    <div>
+    
+    <Link to='/'>
+        <button>Avalehet</button>
+      </Link>
+      <Link to='/kontakt'>
+        <button>Kontakt</button>
+      </Link>
+      <Link to='/meist'>
+        <button>Meist</button>
+      </Link>
+    
+    
+    <Routes>
+     <Route path='' element={ <Avaleht /> } />
+     <Route path='kontakt' element={ <Kontakt/> } /> 
+     <Route path='meist' element={<Meist/> } />  
+    </Routes>
+
+
     </div>
   );
 }
