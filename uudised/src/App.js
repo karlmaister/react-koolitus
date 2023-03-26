@@ -3,8 +3,9 @@ import { Link, Route, Routes } from 'react-router-dom';
 import './App.css';
 import Avaleht from './pages/Avaleht';
 import Uudised from './pages/Uudised';
-import Meist from './pages/Meist';
 import Kontakt from './pages/Kontakt';
+import Meist from './pages/Meist';
+
 
 
 
@@ -30,8 +31,8 @@ function App() {
 
 <Route path='' element={ <Avaleht /> } />
 <Route path='uudised' element={ <Uudised/> } />
-<Route path='kontakt' element={ <Meist/> } /> 
-<Route path='meist' element={<Kontakt/> } />
+<Route path='kontakt' element={ <Kontakt/> } /> 
+<Route path='meist' element={<Meist/> } />
 
 </Routes>
       

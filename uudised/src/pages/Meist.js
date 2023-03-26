@@ -1,25 +1,35 @@
 import React from 'react'
+import { useState } from 'react'
 
 function Meist() {
+  const [kontakt, n2itaKontakt] = useState("");
+
+
+
   return (
     <div>
       <div> see on meist, nähtav localhost:3000/meist aadressil </div>
       <div>Karl</div>
-        <div>+37588964</div>
+        
         <div>Põhivend</div>
-        <br />
-        <div>Imre</div>
-        <div>+37588964</div>
+        <button onClick={() => n2itaKontakt("+37588964")}>Võta ühendust</button>
+        <br /><br />
+        <div>Batman</div>
+        
         <div>SEO</div>
-        <br />
-        <div>Erik</div>
-        <div>+37588964</div>
+        <button onClick={() => n2itaKontakt("BAT signaal")}>Võta ühendust</button>
+        <br /><br />
+        <div>Aquaman</div>
+        
         <div>Turundus</div>
-        <br />
-        <div>Kris</div>
-        <div>+37588964</div>
+        <button onClick={() => n2itaKontakt("+3758896411")}>Võta ühendust</button>
+        <br /><br />
+        <div>Superman</div>
+        
         <div>Spetsialist</div>
-        <br />
+        <button onClick={() => n2itaKontakt("+3758896422")}>Võta ühendust</button>
+        <br /><br />
+        { kontakt !== "" && <div>Tema kontakt: {kontakt}</div>}
     </div>
   )
 }
