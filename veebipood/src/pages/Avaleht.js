@@ -35,7 +35,7 @@ function suurenda() {
 
       {kogus > 0 &&<button onClick={nulli}>Nulli tagasi</button>}
       <button disabled={kogus === 0} onClick={vahenda}>-</button>
-      {kogus}
+      <span className={kogus >= 10 ? "kuld" : undefined}>{kogus}</span>
       <button onClick={suurenda}>+</button>
     </div>
   )
