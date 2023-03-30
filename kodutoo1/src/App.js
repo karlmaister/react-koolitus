@@ -4,6 +4,7 @@ import { Routes, Route, Link } from 'react-router-dom';
 import Avaleht from './pages/Avaleht';
 import Kontakt from './pages/Kontakt';
 import Meist from './pages/Meist';
+import Seaded from './pages/Seaded';
 import { useState, useRef } from 'react';
 
 function App() {
@@ -49,12 +50,16 @@ function App() {
       <Link to='/meist'>
         <button>Meist</button>
       </Link>
+      <Link to='/seaded'>
+        <button>Seaded</button>
+      </Link>
     
     
     <Routes>
      <Route path='' element={ <Avaleht /> } />
      <Route path='kontakt' element={ <Kontakt/> } /> 
      <Route path='meist' element={<Meist/> } />  
+     <Route path='seaded' element={<Seaded/> } />  
     </Routes>
 
 

@@ -1,11 +1,11 @@
 
 import { Link, Route, Routes } from 'react-router-dom';
 import './App.css';
+import 'react-toastify/dist/ReactToastify.css';
 import Avaleht from './pages/Avaleht';
 import Uudised from './pages/Uudised';
 import Kontakt from './pages/Kontakt';
 import Meist from './pages/Meist';
-
 
 
 

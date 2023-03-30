@@ -1,3 +1,6 @@
+
+
+
 .App {
   text-align: center;
 }
@@ -35,4 +38,14 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+* {
+  font-family: 'Raleway', sans-serif;
+  font-weight: bold;
+}
+
+.valitud {
+  color: blue;
+  font-weight: bold;
 }

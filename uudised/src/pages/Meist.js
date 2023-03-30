@@ -1,5 +1,6 @@
 import React from 'react'
 import { useState } from 'react'
+import { ToastContainer, toast } from 'react-toastify';
 
 function Meist() {
   const [kontakt, n2itaKontakt] = useState("");
@@ -30,6 +31,9 @@ function Meist() {
         <button onClick={() => n2itaKontakt("+3758896422")}>Võta ühendust</button>
         <br /><br />
         { kontakt !== "" && <div>Tema kontakt: {kontakt}</div>}
+
+
+        <ToastContainer position='top-center'></ToastContainer>
     </div>
   )
 }
