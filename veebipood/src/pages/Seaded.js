@@ -26,15 +26,24 @@ const muudaKeelFin = () => {
 }
 
 const salvestaAadress = () => {
+    if (aadressViide.current.value === "") {
+        toast.error("Ei saanud sisestatud. Tühi väli");
+        return; //ei lase edasi
+    }
     if (/^[A-ZÜÕÖÄ0-9]/.test(aadressViide.current.value)=== false) {
         toast.success("Edukalt sisestatud");
-        return;
+        return; //ei lase edasi
     }
     localStorage.setItem("aadress", aadressViide.current.value);
     aadressViide.current.value = "";
 }
 
 const salvestaEmail = () => {
+    if (emailViide.current.value === "") {
+        toast.error("Ei saanud sisestatud. Tühi väli");
+        return; //ei lase edasi
+    }
+
     if (emailViide.current.value.includes("@") === false) {
         toast.error("@ märk on puudu emailis");
         return;
@@ -44,6 +53,10 @@ const salvestaEmail = () => {
 }
 
 const salvestaTelefon = () => {
+    if (telefonViide.current.value === "") {
+        toast.error("Ei saanud sisestatud. Tühi väli");
+        return; //ei lase edasi
+    }
     if (/^[0-9]+$/.test(telefonViide.current.value)=== false) {
         toast.error("Ainult numbrid");
         return;

@@ -18,3 +18,20 @@
 .kuld {
   color: gold;
 }
+
+.tume-leht {
+  background-color: black;
+  color: white;
+}
+
+.hele-leht {
+  background-color: wheat;
+}
+
+.tume-leht, .hele-leht {
+  min-height: 100vh;
+}
+
+.aktiivne-nupp {
+  height: 30px;
+}
