@@ -24,7 +24,7 @@ function Seaded() {
   return (
     <div>
       {mode==="light" && <button onClick={Darkmode}>Dark mode</button>}
-      {mode ==="dark" && <button onClick={Lightmode}>Light mode</button>}
+      {mode ==="rainbow" && <button onClick={Lightmode}>Light mode</button>}
       {mode ==="dark" && <button onClick={Rainbowmode}>Rainbow mode</button>}
     </div>
   )

@@ -8,7 +8,7 @@ function Avaleht() {
       <div>
       <div className="App">
         
-         Guugelda CSS-i (märksõnadega näiteks: „css make text underline“ / „css align text right“ / „css change … „ /
+         Guugelda CSS-i märksõnadega näiteks: „css make text underline“ / „css align text right“ / „css change … „ /
         <button class="nupp">NUPP</button>
         <p class="tekst"><em>TEKST</em></p>
         <p class="green">ROHELINE TEKST</p>

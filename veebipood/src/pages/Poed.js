@@ -9,13 +9,17 @@ function Poed() {
     }
 
     const sorteeriAZ = () => {
-        poed.sort(); // default paneb A-Z
-        uuendaPoed(poedFailist.slice());  //slice arraydel vajalik kustutab mälukoha
+        
+        poed.sort();
+        uuendaPoed(poedFailist.slice()); // default paneb A-Z
+          //slice arraydel vajalik kustutab mälukoha
     }
 
     const sorteeriZA = () => {
-        poed.sort((a,b) => b.localeCompare(a)); // default paneb A-Z
-        uuendaPoed(poed.slice());  //slice arraydel vajalik kustutab mälukoha
+        
+        poed.sort((a,b) => b.localeCompare(a));
+        uuendaPoed(poedFailist.slice()); // default paneb A-Z
+        
     }
 
     const sorteeriTahedKasv = () => {
