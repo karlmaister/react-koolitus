@@ -96,6 +96,7 @@ function Poed() {
   return (
 
     <div>
+        <div>Kokku poode {poed.length} tk</div>
         <button onClick={sorteeriAZ}>Sorteeri A-Z</button>
         <button onClick={sorteeriZA}>Sorteeri Z-A</button>
         <button onClick={sorteeriTahedKasv}>Sorteeri Kasvav</button>

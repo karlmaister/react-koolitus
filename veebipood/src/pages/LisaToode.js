@@ -1,4 +1,5 @@
 import React, { useRef, useState } from 'react'
+import tootedFailist from "../data/tooted.json"
 
 function LisaToode() {
   const [sonum, uuendaSonum] = useState("Lisa toode!");
@@ -10,7 +11,8 @@ if (inputiLuger.current.value === "") {
 
     uuendaSonum("Tühja nimiega toodet ei saa lisada");
     }  else {
-    uuendaSonum("Toode lisatud " + inputiLuger.current.value);
+    uuendaSonum("Toode lisatud: " + inputiLuger.current.value);
+    tootedFailist.push(inputiLuger.current.value);
     }
   }
 
@@ -18,7 +20,7 @@ if (inputiLuger.current.value === "") {
   return (
     <div>
       <div>{sonum}</div>
-      <label>BMW M5</label> <br />
+      <label>Uue toote nimi</label> <br />
       <input ref={inputiLuger}type="text"/> <br />
       <button onClick={lisa}>Osta</button>      <br />
     </div>

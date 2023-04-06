@@ -81,9 +81,9 @@ function App() {
           <Route path="seaded" element={ <Seaded/> }/>
           <Route path="poed" element={ <Poed/> }/>
           <Route path="halda" element={ <HaldaTooted/> }/>
-          <Route path="muuda" element={ <MuudaToode/> }/>
+          <Route path="muuda/:index" element={ <MuudaToode/> }/>
           <Route path="tooted" element={ <Tooted/> }/>
-          <Route path="yksiktoode" element={ <YksikToode/> }/>
+          <Route path="yksiktoode/:jrkNr" element={ <YksikToode/> }/>
         </Routes>
 
         {/* <div>Footer</div> */}

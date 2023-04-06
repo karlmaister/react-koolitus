@@ -14,6 +14,7 @@ function Tagasiside() {
 
     function lisaUus() {
         tagasisided.push(tagasisidedRef.current.value);
+        uuendaTagasisided(tagasisided.slice())
     }
 
   return (
