@@ -1,1 +1,10 @@
-["Ülemiste","Viimsi","Kristiine","Rocca","Magistrali","Vesse","Järveotsa"]
+[
+    {"nimi": "Ülemiste" ,"tel": "56515151"},
+    {"nimi": "Kristiine" ,"tel": "565151512"},
+    {"nimi": "Rocca" ,"tel": "565151513"},
+    {"nimi": "Magistrali" ,"tel": "565151514"},
+    {"nimi": "Vesse" ,"tel": "565151515"},
+    {"nimi": "Järveotsa" ,"tel": "565151517"},
+    {"nimi": "Viimsi" ,"tel": "565151518"}
+   
+]

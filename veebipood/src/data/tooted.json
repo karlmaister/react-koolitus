@@ -1,53 +1,32 @@
 [
-    "Toyota Camry",
-    "Ford Mustang",
-    "Honda Civic",
-    "Chevrolet Corvette",
-    "BMW M3",
-    "Mercedes-Benz S-Class",
-    "Audi A4",
-    "Porsche 911",
-    "Dodge Charger",
-    "Jeep Wrangler",
-    "Mazda CX-5",
-    "Hyundai Sonata",
-    "Kia Sportage",
-    "Subaru Impreza",
-    "Nissan GT-R",
-    "Lexus LS",
-    "Tesla Model S",
-    "Volkswagen Golf",
-    "Acura NSX",
-    "Cadillac Escalade",
-    "GMC Sierra",
-    "Ferrari 488",
-    "Lamborghini Huracan",
-    "Aston Martin Vantage",
-    "Rolls-Royce Phantom",
-    "Bentley Continental GT",
-    "Maserati GranTurismo",
-    "Bugatti Chiron",
-    "McLaren 720S",
-    "Alfa Romeo Giulia",
-    "Lotus Evora",
-    "Pagani Huayra",
-    "Koenigsegg Agera",
-    "Ford F-150",
-    "Chevrolet Silverado",
-    "Dodge Challenger",
-    "Jeep Grand Cherokee",
-    "Toyota 4Runner",
-    "Honda Accord",
-    "BMW 7 Series",
-    "Mercedes-Benz GLE",
-    "Audi Q7",
-    "Porsche Cayenne",
-    "Nissan Altima",
-    "Lexus RX",
-    "Tesla Model X",
-    "Volkswagen Passat",
-    "Acura TLX",
-    "Cadillac CT6",
-    "GMC Acadia"
-  ]
-  
+  {
+    "nimi": "Toyota Camry",
+    "hind": 35000,
+    "pilt": "https://www.elke.ee/bw_client_files/vsp/public/model_pictures/1495_toyota-camry-2021-gallery-01-full_tcm-3019-2203475.jpg",
+    "aktiivne": true
+  },
+  {
+    "nimi": "Ford Mustang",
+    "hind": 6000,
+    "pilt": "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/4e9a7794-1671114512.jpeg",
+    "aktiivne": true
+  },
+  {
+    "nimi": "Honda Civic",
+    "hind": 3000,
+    "pilt": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSnKwf_eSnM2DcqXdir_ua0AuSkeGxSnnkkvzGm_65CJpEEdcKNm9C5-zDRZm_Qy_3xAdw&usqp=CAU",
+    "aktiivne": true
+  },
+  {
+    "nimi": "Nissan GTR",
+    "hind": 305600,
+    "pilt":"https://img.freepik.com/free-vector/modern-blue-urban-adventure-suv-vehicle-illustration_1344-205.jpg?w=2000",
+    "aktiivne": true
+  },
+  {
+    "nimi": "BMW M5",
+    "hind": 30000,
+    "pilt": "https://img.freepik.com/free-vector/modern-blue-urban-adventure-suv-vehicle-illustration_1344-205.jpg?w=2000",
+    "aktiivne": true
+  }
+]
