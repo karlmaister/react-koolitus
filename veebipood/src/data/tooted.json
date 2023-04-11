@@ -28,5 +28,66 @@
     "hind": 30000,
     "pilt": "https://img.freepik.com/free-vector/modern-blue-urban-adventure-suv-vehicle-illustration_1344-205.jpg?w=2000",
     "aktiivne": true
-  }
+  },
+  
+    {
+      "name": "Toyota Camry",
+      "price": 43750,
+      "pilt": "https://img.freepik.com/free-vector/modern-blue-urban-adventure-suv-vehicle-illustration_1344-205.jpg?w=2000",
+      "active": true
+    },
+    {
+      "name": "Ford Camry",
+      "price": 89978,
+      "pilt": "https://img.freepik.com/free-vector/modern-blue-urban-adventure-suv-vehicle-illustration_1344-205.jpg?w=2000",
+      "active": true
+    },
+    {
+      "name": "Honda Camry",
+      "price": 67649,
+      "pilt": "https://img.freepik.com/free-vector/modern-blue-urban-adventure-suv-vehicle-illustration_1344-205.jpg?w=2000",
+      "active": true
+    },
+    {
+      "name": "Chevrolet Camry",
+      "price": 21016,
+      "pilt": "https://img.freepik.com/free-vector/modern-blue-urban-adventure-suv-vehicle-illustration_1344-205.jpg?w=2000",
+      "active": true
+    },
+    {
+      "name": "BMW Camry",
+      "price": 60789,
+      "pilt": "https://img.freepik.com/free-vector/modern-blue-urban-adventure-suv-vehicle-illustration_1344-205.jpg?w=2000",
+      "active": true
+    },
+    {
+      "name": "Mercedes-Benz Camry",
+      "price": 45115,
+      "pilt": "https://img.freepik.com/free-vector/modern-blue-urban-adventure-suv-vehicle-illustration_1344-205.jpg?w=2000",
+      "active": true
+    },
+    {
+      "name": "Audi Camry",
+      "price": 78411,
+      "pilt": "https://img.freepik.com/free-vector/modern-blue-urban-adventure-suv-vehicle-illustration_1344-205.jpg?w=2000",
+      "active": true
+    },
+    {
+      "name": "Porsche Camry",
+      "price": 42286,
+      "pilt": "https://img.freepik.com/free-vector/modern-blue-urban-adventure-suv-vehicle-illustration_1344-205.jpg?w=2000",
+      "active": true
+    },
+    {
+      "name": "Dodge Camry",
+      "price": 52436,
+      "pilt": "https://img.freepik.com/free-vector/modern-blue-urban-adventure-suv-vehicle-illustration_1344-205.jpg?w=2000",
+      "active": true
+    },
+    {
+      "name": "Jeep Camry",
+      "price": 23772,
+      "pilt": "https://img.freepik.com/free-vector/modern-blue-urban-adventure-suv-vehicle-illustration_1344-205.jpg?w=2000",
+      "active": true
+    }
 ]

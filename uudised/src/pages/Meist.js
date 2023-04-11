@@ -1,15 +1,33 @@
 import React from 'react'
 import { useState } from 'react'
 import { ToastContainer, toast } from 'react-toastify';
+import tootajadFailist from '../Tootajad.json'
 
 function Meist() {
-  const [kontakt, n2itaKontakt] = useState("");
+  const [kontakt, n2itaKontakt] = useState(tootajadFailist.slice());
 
+  const [valitud, uuendaValitud] = useState("");
 
+  function votaYhendust(e) {
+    uuendaValitud(e.nimi);
+  }
 
   return (
+
     <div>
-      <div> see on meist, nähtav localhost:3000/meist aadressil </div>
+
+      {kontakt.map(e =>
+        <div className={e.nimi === valitud ? 'aktiivne' : undefined}> <br />
+          <div >Nimi: {e.nimi}</div>
+          <div>Tegevusala: {e.ala}</div>
+          <div>Telefon: {e.telefon}
+            <button onClick={() => votaYhendust(e)}>Võta ühendust</button></div>
+        </div>
+      )}
+
+
+
+      {/* <div> see on meist, nähtav localhost:3000/meist aadressil </div>
       <div>Karl</div>
         
         <div>Põhivend</div>
@@ -30,10 +48,11 @@ function Meist() {
         <div>Spetsialist</div>
         <button onClick={() => n2itaKontakt("+3758896422")}>Võta ühendust</button>
         <br /><br />
-        { kontakt !== "" && <div>Tema kontakt: {kontakt}</div>}
+        { kontakt !== "" && <div>Tema kontakt: {kontakt}</div>} */}
 
 
-        <ToastContainer position='top-center'></ToastContainer>
+
+      <ToastContainer position='top-center'></ToastContainer>
     </div>
   )
 }
