@@ -14,7 +14,12 @@ const resources = {
             "maintain-categories":"Maintain Categories",
             "maintain-shops":"Maintain Shops",
             "add-product":"Add Product",
-            "maintain-products":"Maintain Products"
+            "maintain-products":"Maintain Products",
+            "sorteeriAZ":"Sort A-Z",
+            "sorteeriZA":"Sort Z-A",
+            "sorteeriKasvav":"Sort Ascending",
+            "sorteeriKahanev":"Sort Descending"
+
 
     }
     },
@@ -27,7 +32,11 @@ const resources = {
             "maintain-categories":"Halda Kategooria",
             "maintain-shops":"Halda Poed",
             "add-product":"Lisa Toode",
-            "maintain-products":"Halda Tooted"
+            "maintain-products":"Halda Tooted",
+            "sorteeriAZ":"Sorteeri A-Z",
+            "sorteeriZA":"Sorteeri Z-A",
+            "sorteeriKasvav":"Sorteeri Kasvav",
+            "sorteeriKahanev":"Sorteeri Kahanev"
     }
     }
 };
