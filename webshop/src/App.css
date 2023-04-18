@@ -17,4 +17,14 @@ margin: 5px;
   padding: 1px;
 }
 
+.map {
+  height: 300px;
+  margin-left: 5%;
+  margin-right: 5%;
+  border-radius: 10px;
+}
+
+.center{
+  text-align: center;
+}
 ;

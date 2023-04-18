@@ -3,12 +3,21 @@ import productsFromFile from '../../data/products.json'
 import { useState, useParams, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
+import { useTranslation } from 'react-i18next';
 
 
 function MaintainProducts() {
   
+
+  const { t, i18n } = useTranslation();
+
+  const updateLanguage = (newLanguage) => {
+    i18n.changeLanguage(newLanguage);
+    localStorage.setItem("language",newLanguage);
+  }
   
   const [products, setProducts] = useState(productsFromFile);
+  const searchRef = useRef();
 
   function deleteProduct(index) {
     products.splice(index, 1);
@@ -36,8 +45,18 @@ function MaintainProducts() {
     setProducts(products.slice())
   }
 
+  function searchFromProducts() {
+    const result = productsFromFile.filter(e =>
+       e.name.toLocaleLowerCase().includes(searchRef.current.value.toLocaleLowerCase()));
+    setProducts(result)
+  }
+  
   return (
     <div>
+
+    <input onChange={searchFromProducts} type="text" ref={searchRef} />
+    <div>{products.length} tk </div>
+
       <div>
         <Button variant="secondary" onClick={sorteeriAZ}>{t("sorteeriAZ")}</Button>
         <Button variant="secondary" onClick={sorteeriZA}>{t("sorteeriZA")}</Button>

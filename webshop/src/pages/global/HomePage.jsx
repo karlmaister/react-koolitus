@@ -4,8 +4,17 @@ import { useState } from 'react'
 
 function HomePage() {
 
-  const [products, setProducts] = useState(productsFromFile);
 
+
+  const [products, setProducts] = useState(productsFromFile);
+  function addToCart(params) {
+    // lisa ostukorv
+    // lisa cart.json
+    // lisa sinna
+    // siia ka toaster
+    // filter by catecory USB drive memory bank
+
+  }
 
   return (
     <div>
@@ -17,8 +26,8 @@ function HomePage() {
 
           <button>Add to Cart</button>
         </div>
-        
-        )}
+
+      )}
     </div>
   )
 }
