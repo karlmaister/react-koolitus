@@ -1,0 +1,61 @@
+.totalsection {
+    position: fixed;
+    right:10%;
+    margin-top: 50px;
+    border: 1px;
+    border-style: solid;
+    border-radius: 30px;
+    background-color: aliceblue;
+    padding: 10px;
+  }
+
+.product {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 5%;
+    border-bottom: 1px solid lightblue;
+    padding: 10px 0px;
+}
+
+.image {
+    width: 100px;
+    height: 100px;
+}
+
+.name {
+    width: 150px;
+}
+
+.price {
+    width: 70px;
+}
+
+.quantity {
+    width: 140px;
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid lightblue;
+    height: 37px;
+    padding: 3px;
+    border-radius: 15px;
+}
+
+.button {
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+}
+
+.button:hover {
+    opacity: 0.7;
+    cursor: pointer;
+}
+
+.button:active {
+    padding: 1px;
+}
+
+.total {
+    width: 100px;
+}
+

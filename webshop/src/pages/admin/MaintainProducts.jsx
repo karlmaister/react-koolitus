@@ -58,10 +58,10 @@ function MaintainProducts() {
     <div>{products.length} tk </div>
 
       <div>
-        <Button variant="secondary" onClick={sorteeriAZ}>{t("sorteeriAZ")}</Button>
-        <Button variant="secondary" onClick={sorteeriZA}>{t("sorteeriZA")}</Button>
-        <Button variant="secondary" onClick={sorteeriKasvav}>{t("sorteeriKasvav")}</Button>
-        <Button variant="secondary" onClick={sorteeriKahanev}>{t("sorteeriKahanev")}</Button>
+        <Button variant="secondary" onClick={sorteeriAZ}>{t("sort.sorteeriAZ")}</Button>
+        <Button variant="secondary" onClick={sorteeriZA}>{t("sort.sorteeriZA")}</Button>
+        <Button variant="secondary" onClick={sorteeriKasvav}>{t("sort.sorteeriKasvav")}</Button>
+        <Button variant="secondary" onClick={sorteeriKahanev}>{t("sort.sorteeriKahanev")}</Button>
       </div>
       {products.map((element, index) =>
         <div key={element.id}>
