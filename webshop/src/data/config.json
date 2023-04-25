@@ -1,0 +1,4 @@
+{
+    "categoriesDbUrl": "https://karli-projekt-veebipood-2023-default-rtdb.europe-west1.firebasedatabase.app/categories.json",
+    "productsDbUrl":"https://karli-projekt-veebipood-2023-default-rtdb.europe-west1.firebasedatabase.app/products.json"
+}   

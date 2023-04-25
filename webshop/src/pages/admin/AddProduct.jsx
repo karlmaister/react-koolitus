@@ -1,10 +1,14 @@
 import React from 'react'
+// import productsFromFile from "../../data/products.json"
+import { useState, useRef, useEffect } from 'react'
+// import cartFromFile from '../../data/cart.json'
 import { t } from 'i18next';
 import { ToastContainer, toast } from 'react-toastify';
+// import Button from '@mui/material/Button';
+// import { Link } from 'react-router-dom';
+import "../../css/HomePage.css"
+import config from '../../data/config.json'
 
-import productsFromFile from '../../data/products.json'
-import { useRef } from 'react';
-import { useState } from 'react';
 
 function AddProduct() {
 
@@ -15,8 +19,18 @@ function AddProduct() {
   const categoryRef = useRef();
   const descriptionRef = useRef();
   const activeRef = useRef();
+  const [dbProducts, setDbProducts] = useState([]);
 
   const [idUnique, setIdUnique] = useState(true);
+
+  useEffect(() => {
+    fetch(config.productsDbUrl)
+    .then(res => res.json())
+    .then(json => {
+      // setProducts(json || []);
+      setDbProducts(json || []);
+    })
+  }, []);
 
   function add() {
 
@@ -30,13 +44,15 @@ function AddProduct() {
       "active": activeRef.current.value.checked,
     }
 
-    productsFromFile.push(addProduct);
+    dbProducts.push(addProduct);
     toast(t("product_added"));
+    fetch(config.productsDbUrl,
+      {"method": "PUT" , "body" : JSON.stringify(dbProducts)})
 
   }
 
   const checkIdUniqueness = () => {
-    const index = productsFromFile.findIndex(e => e.id === Number(idRef.current.value));
+    const index = dbProducts.findIndex(e => e.id === Number(idRef.current.value));
 
     if (index === -1) {
       setIdUnique(true)

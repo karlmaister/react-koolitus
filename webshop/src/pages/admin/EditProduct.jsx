@@ -1,14 +1,27 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useNavigate, useParams } from 'react-router-dom';
-import productsFromFile from '../../data/products.json'
+// import productsFromFile from '../../data/products.json'
 import { useRef } from 'react';
 import { useState } from 'react';
+import config from '../../data/config.json'
 
 function EditProduct() {
 
   const { id } = useParams();
 
-  const found = productsFromFile.find( element => element.id === Number(id) );
+  const [dbProducts, setDbProducts] = useState([]);
+  
+
+  useEffect(() => {
+    fetch(config.productsDbUrl)
+    .then(res => res.json())
+    .then(json => {
+      // setProducts(json || []);
+      setDbProducts(json || []);
+    })
+  }, []);
+
+  const found = dbProducts.find( element => element.id === Number(id) );
 
   const idRef = useRef();
   const nameRef = useRef();
@@ -21,7 +34,7 @@ function EditProduct() {
   const [idUnique, setIdUnique] = useState(true);
 
   function edit() {
-    const index = productsFromFile.findIndex(element => element.id === Number(id));
+    const index = dbProducts.findIndex(element => element.id === Number(id));
 
     const updateProduct = {
       "id": Number(idRef.current.value),
@@ -33,12 +46,17 @@ function EditProduct() {
       "active": activeRef.current.value.checked,
     };
 
-    productsFromFile[index] = updateProduct;
-    navigate("/admin/maintain-products");
+    dbProducts[index] = updateProduct;
+   
+    fetch(config.productsDbUrl,  
+      {"method": "PUT" , "body" : JSON.stringify(dbProducts)})
+      .then(() => navigate("/admin/maintain-products"));
   }
 
+
+
   const checkIdUniqueness = () => {
-    const index = productsFromFile.findIndex(e => e.id === Number(idRef.current.value));
+    const index = dbProducts.findIndex(e => e.id === Number(idRef.current.value));
 
     if (index === -1) {
       setIdUnique(true)
@@ -53,6 +71,8 @@ function EditProduct() {
     <div>
 
       { idUnique === false && <div>Inserted ID is not unique!</div>}
+      {found !== undefined &&
+  <div>
       <label> ID:</label>
       <input ref={idRef} onChange={checkIdUniqueness} type="number" defaultValue={found.id}/> <br />
       <label> Name:</label>
@@ -67,8 +87,10 @@ function EditProduct() {
       <input ref={descriptionRef} type="text" defaultValue={found.description}/> <br />
       <label> Active:</label>
       <input ref={activeRef} type="checkbox" defaultChecked={found.active}/> <br />
-    <button disabled={idUnique === false} onClick={edit}>Edit</button>
-
+    <button disabled={idUnique === false} onClick={edit}>Edit</button> 
+    </div>
+}
+{found === undefined && <div>Product not found</div>}
     </div>
   )
 }

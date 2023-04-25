@@ -1,27 +1,36 @@
-import React from 'react'
-import productsFromFile from '../../data/products.json'
-import { useState, useParams, useRef } from 'react';
+import React, { useEffect } from 'react'
+// import productsFromFile from '../../data/products.json'
+import { useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
-import { useTranslation } from 'react-i18next';
+import config from '../../data/config.json'
+import { t } from 'i18next';
+
 
 
 function MaintainProducts() {
   
-
-  const { t, i18n } = useTranslation();
-
-  const updateLanguage = (newLanguage) => {
-    i18n.changeLanguage(newLanguage);
-    localStorage.setItem("language",newLanguage);
-  }
+  const [products, setProducts] = useState([]);
+  const [dbProducts, setDbProducts] = useState([]);
   
-  const [products, setProducts] = useState(productsFromFile);
   const searchRef = useRef();
 
-  function deleteProduct(index) {
-    products.splice(index, 1);
-    setProducts(productsFromFile.slice());
+  useEffect(() => {
+    fetch(config.productsDbUrl)
+    .then(res => res.json())
+    .then(json => {
+      setProducts(json || []);
+      setDbProducts(json || []);
+    })
+  }, []);
+  
+
+  function deleteProduct(productId) {
+    const index = dbProducts.findIndex(element => element.id === productId);
+    dbProducts.splice(index, 1);
+    setProducts(dbProducts.slice()); 
+       fetch(config.productsDbUrl,  
+      {"method": "PUT" , "body" : JSON.stringify(dbProducts)})
   }
 
  
@@ -46,7 +55,7 @@ function MaintainProducts() {
   }
 
   function searchFromProducts() {
-    const result = productsFromFile.filter(e =>
+    const result = dbProducts.filter(e =>
        e.name.toLocaleLowerCase().includes(searchRef.current.value.toLocaleLowerCase()));
     setProducts(result)
   }
@@ -63,9 +72,9 @@ function MaintainProducts() {
         <Button variant="secondary" onClick={sorteeriKasvav}>{t("sort.sorteeriKasvav")}</Button>
         <Button variant="secondary" onClick={sorteeriKahanev}>{t("sort.sorteeriKahanev")}</Button>
       </div>
-      {products.map((element, index) =>
+      {products.map(element =>
         <div key={element.id}>
-          <img src={element.image}></img>
+          <img src={element.image} alt=""></img>
           <div>{element.id}</div>
           <div>{element.name}</div>
           <div>{element.price} €</div>
@@ -75,7 +84,7 @@ function MaintainProducts() {
           <Link to={"/admin/edit-product/" + element.id}>
             <button>Edit</button>
           </Link>
-          <button onClick={deleteProduct}>Delete</button>
+          <button onClick={() => deleteProduct(element.id)}>Delete</button>
         </div>
 
       )}

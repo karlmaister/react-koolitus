@@ -9,3 +9,8 @@ function MaintainShops() {
 }
 
 export default MaintainShops
+
+
+// teha maintain cateogries järgi
+
+// uus aadress /shops

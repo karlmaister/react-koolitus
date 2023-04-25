@@ -1,5 +1,5 @@
 import React from 'react'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 // import cartFromFile from '../../data/cart.json'
 import { t } from 'i18next';
 import { ToastContainer, toast } from 'react-toastify';
@@ -10,6 +10,13 @@ import "../../css/Cart.css"
 function Cart() {
 
   const [cart, updateCart] = useState(JSON.parse(localStorage.getItem("cart")) || []);
+  const [parcelMachines, setParcelMachines] = useState([]);
+
+  useEffect(() => {
+    fetch('https://www.omniva.ee/locations.json')
+      .then(response => response.json())
+      .then(json => setParcelMachines(json))
+  }, []);
 
   function clearCart() {
     updateCart([]);
@@ -61,16 +68,21 @@ function Cart() {
           <div className="name">{element.product.name}</div>
           <div className="price">{element.product.price}</div>
           <div className="quantity">
-            <img className="button" onClick={() => increase(qnr)} src="/plus.png"></img>
+            <img className="button" onClick={() => increase(qnr)} src="/plus.png" alt=""></img>
             <div >{element.quantity}</div>
-            <img className="button" onClick={() => decrease(qnr)} src="/minus.png"></img>
+            <img className="button" onClick={() => decrease(qnr)} src="/minus.png" alt=""></img>
           </div>
           <div className="total">{element.product.price * element.quantity.toFixed(2)}</div>
-          <img  className="button" onClick={() => deleteItem(qnr)}  src="/delete-button.png"></img>
+          <img  className="button" onClick={() => deleteItem(qnr)}  src="/delete-button.png" alt=""></img>
         </div>
 
       )}
-
+  <select>
+    {parcelMachines
+    .filter(element => element.NAME !== "1. eelistus Omnivas")
+    .filter(element => element.A0_NAME === "EE")
+    .map(element => <option>{element.NAME}</option>)}
+    </select>
 
       <ToastContainer position='bottom-center'></ToastContainer>
     </div>

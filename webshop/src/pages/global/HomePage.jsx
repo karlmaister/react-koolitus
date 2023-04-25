@@ -1,12 +1,13 @@
 import React from 'react'
-import productsFromFile from "../../data/products.json"
-import { useState, useRef } from 'react'
+// import productsFromFile from "../../data/products.json"
+import { useState, useRef, useEffect } from 'react'
 // import cartFromFile from '../../data/cart.json'
 import { t } from 'i18next';
 import { ToastContainer, toast } from 'react-toastify';
 import Button from '@mui/material/Button';
 import { Link } from 'react-router-dom';
 import "../../css/HomePage.css"
+import config from '../../data/config.json'
 
 
 function HomePage() {
@@ -14,11 +15,20 @@ function HomePage() {
   
   const searchRef = useRef();
 
-  const [products, setProducts] = useState(productsFromFile);
+  const [products, setProducts] = useState([]);
+  const [dbProducts, setDbProducts] = useState([]);
 
+  useEffect(() => {
+    fetch(config.productsDbUrl)
+    .then(res => res.json())
+    .then(json => {
+      setProducts(json || []);
+      setDbProducts(json || []);
+    })
+  }, []);
 
-  function filterByCategory() {
-    const result = productsFromFile.filter(element => element.category.includes("motorcycle"));
+  function filterByCategory(categoryClicked) {
+    const result = dbProducts.filter(element => element.category === categoryClicked);
     setProducts(result);
 }
   
@@ -41,7 +51,7 @@ function HomePage() {
   }
 
   function resetFilters() {
-    setProducts(productsFromFile);
+    setProducts(dbProducts);
   }
 
     function sorteeriAZ() {
@@ -65,7 +75,7 @@ function HomePage() {
     }
   
     function searchFromProducts() {
-      const result = productsFromFile.filter(e =>
+      const result = products.filter(e =>
          e.name.toLocaleLowerCase().includes(searchRef.current.value.toLocaleLowerCase()));
       setProducts(result)
     }
@@ -84,13 +94,14 @@ function HomePage() {
         <Button variant="secondary" onClick={sorteeriKahanev}>{t("sort.sorteeriKahanev")}</Button>
       </div>
 
-      <Button variant="contained" onClick={filterByCategory}>{t("filter_motorcycle")}</Button>
+      <Button variant="contained" onClick={() => filterByCategory("motorcycle")}>{t("filter_motorcycle")}</Button>
+      <Button variant="contained" onClick={() => filterByCategory("camping")}>Camping</Button>
       <Button  variant="contained" onClick={resetFilters}>Reset</Button>
-     <div className="products">
+     <div className="home-products">
      {products.map((element) =>
         <div className="home-product" key={element.id}>
           <Link to={"/single-product/" + element.id}>
-          <img src={element.image}></img>
+          <img src={element.image} alt=""></img>
           <div>{element.name}</div>
           <div>{element.price}</div>
           </Link>
