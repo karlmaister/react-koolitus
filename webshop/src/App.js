@@ -1,5 +1,5 @@
 
-import { Routes, Route, Link } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import './App.css';
 import HomePage from "./pages/global/HomePage"
 import Cart from "./pages/global/Cart"
@@ -12,45 +12,21 @@ import EditProduct from "./pages/admin/EditProduct"
 import MaintainProducts from "./pages/admin/MaintainProducts"
 import MaintainCategories from "./pages/admin/MaintainCategories"
 import MaintainShops from "./pages/admin/MaintainShops"
-import Container from 'react-bootstrap/Container';
-import Nav from 'react-bootstrap/Nav';
-import Navbar from 'react-bootstrap/Navbar';
-import { useTranslation } from 'react-i18next';
 import 'react-toastify/dist/ReactToastify.css';
+import NavigationBar  from './components/NavigationBar';
 
 
 
 function App() {
 
-  const { t, i18n } = useTranslation();
 
-  const updateLanguage = (newLanguage) => {
-    i18n.changeLanguage(newLanguage);
-    localStorage.setItem("language",newLanguage);
-  }
 
 
   return (
     <div className="App">
+      <NavigationBar />
 
-      
-
-      <Navbar bg="dark" variant="dark">
-        <Container>
-          <Navbar.Brand as={Link} to="/"> WebSHOP</Navbar.Brand>
-          <Nav className="me-auto">
-            <Nav.Link as={Link} to="/admin">{t("nav.admin")}</Nav.Link>
-            <Nav.Link as={Link} to="/contact">{t("nav.contact")}</Nav.Link>
-            <Nav.Link as={Link} to="/shops">{t("nav.shops")}</Nav.Link>
-            <Nav.Link as={Link} to="/cart">{t("nav.cart")}</Nav.Link>
-          </Nav>
-          <img className="langicon" src="/estonia.png" onClick={() => updateLanguage("ee")}/>
-          <img className="langicon" src="/uk.png" onClick={() => updateLanguage("en")}/>
-        </Container>
-
-      </Navbar>
       <br />
-
 
       <Routes>
         <Route path="" element={<HomePage />} />

@@ -2,6 +2,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Anuphan:wght@200&display=swap');
 
 
+td, th {
+  border: 1px solid black;
+}
+
 .langicon {
 width: 30px;
 height: 30px;
@@ -33,4 +37,9 @@ margin: 5px;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 20px;
   
+}
+
+.image {
+  width: 100px;
+  height: 100px;
 }

@@ -22,3 +22,13 @@ code {
   gap: 20px;
   
 }
+
+.active-product {
+background-color: lightgreen;
+border: 1 px solid green;
+}
+
+.inactive-product {
+  background-color: lightcoral;
+  border: 1 px solid red;
+}

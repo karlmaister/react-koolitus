@@ -6,7 +6,7 @@ import { t } from 'i18next';
 import { ToastContainer, toast } from 'react-toastify';
 import Button from '@mui/material/Button';
 import { Link } from 'react-router-dom';
-import "../../css/HomePage.css"
+import styles from "../../css/HomePage.module.css"
 import config from '../../data/config.json'
 
 
@@ -97,9 +97,9 @@ function HomePage() {
       <Button variant="contained" onClick={() => filterByCategory("motorcycle")}>{t("filter_motorcycle")}</Button>
       <Button variant="contained" onClick={() => filterByCategory("camping")}>Camping</Button>
       <Button  variant="contained" onClick={resetFilters}>Reset</Button>
-     <div className="home-products">
+     <div className={styles.products}>
      {products.map((element) =>
-        <div className="home-product" key={element.id}>
+        <div className={styles["home-product"]} key={element.id}>
           <Link to={"/single-product/" + element.id}>
           <img src={element.image} alt=""></img>
           <div>{element.name}</div>

@@ -5,33 +5,35 @@ function Avaleht() {
   const [klikitud, uuendaKlikitud] = useState("");
 
   const kuvaNimi = (tegelane) => {
-    uuendaKlikitud(tegelane.VÕTI);
-  } 
+    uuendaKlikitud(tegelane.nimi);
+  }
 
-  
-  
 
-  const tegelased = [
-    {VÕTI: "Mickey", VÕTI2: "Mouse", VÕTI3: "Disneyland"},
-    {VÕTI: "Minnie", VÕTI2: "Mouse", VÕTI3: "Disneyland"},
-    {VÕTI: "Winnie", VÕTI2: "Pooh", VÕTI3: "Hundred Acre Wood"},
-    {VÕTI: "Roo", VÕTI2: "Kangaroo", VÕTI3: "Hundred Acre Wood"},
-    {VÕTI: "Scooby", VÕTI2: "Doo", VÕTI3: "Crystal Cove"},
-    ];
+  const valitudTegelane = (klikitudTegelane) => {
+    const valitud = JSON.parse(localStorage.getItem("valitudTegelased")) || [];
+    valitud.push(klikitudTegelane);
+    localStorage.setItem("valitudTegelased",JSON.stringify(valitud))
+  }
 
-    
+
+
+  const tegelased = JSON.parse(localStorage.getItem("tegelased")) || [];
+
+
   return (
     <div>
-      
-{tegelased.map(tegelane => 
-	<div>
-		<div> {tegelane.VÕTI} <button onClick={() => kuvaNimi(tegelane)}>Ava nimi</button></div>
-<div> {tegelane.VÕTI2} </div>
-<div> {tegelane.VÕTI3} </div>
-</div>)
-}
 
-{klikitud !== "" && <div>Klikkisid tegelase {klikitud}  peal</div>}
+      {tegelased.map(tegelane =>
+        <div>
+          <div> {tegelane.nimi} <button onClick={() => kuvaNimi(tegelane)}>Ava nimi</button></div>
+          <div> {tegelane.perenimi} </div>
+          <div> {tegelane.elukoht} </div>
+          <div> {tegelane.vanus} </div>
+          <button onClick={() => (valitudTegelane(tegelane))}>Vali</button>
+        </div>)
+      }
+
+      {klikitud !== "" && <div>Klikkisid tegelase {klikitud}  peal</div>}
 
     </div>
   )

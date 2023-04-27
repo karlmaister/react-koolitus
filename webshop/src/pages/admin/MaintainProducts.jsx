@@ -9,31 +9,31 @@ import { t } from 'i18next';
 
 
 function MaintainProducts() {
-  
+
   const [products, setProducts] = useState([]);
   const [dbProducts, setDbProducts] = useState([]);
-  
+
   const searchRef = useRef();
 
   useEffect(() => {
     fetch(config.productsDbUrl)
-    .then(res => res.json())
-    .then(json => {
-      setProducts(json || []);
-      setDbProducts(json || []);
-    })
+      .then(res => res.json())
+      .then(json => {
+        setProducts(json || []);
+        setDbProducts(json || []);
+      })
   }, []);
-  
+
 
   function deleteProduct(productId) {
     const index = dbProducts.findIndex(element => element.id === productId);
     dbProducts.splice(index, 1);
-    setProducts(dbProducts.slice()); 
-       fetch(config.productsDbUrl,  
-      {"method": "PUT" , "body" : JSON.stringify(dbProducts)})
+    setProducts(dbProducts.slice());
+    fetch(config.productsDbUrl,
+      { "method": "PUT", "body": JSON.stringify(dbProducts) })
   }
 
- 
+
   function sorteeriAZ() {
     products.sort((a, b) => a.name.localeCompare(b.name));
     setProducts(products.slice())
@@ -56,15 +56,15 @@ function MaintainProducts() {
 
   function searchFromProducts() {
     const result = dbProducts.filter(e =>
-       e.name.toLocaleLowerCase().includes(searchRef.current.value.toLocaleLowerCase()));
+      e.name.toLocaleLowerCase().includes(searchRef.current.value.toLocaleLowerCase()));
     setProducts(result)
   }
-  
+
   return (
     <div>
 
-    <input onChange={searchFromProducts} type="text" ref={searchRef} />
-    <div>{products.length} tk </div>
+      <input onChange={searchFromProducts} type="text" ref={searchRef} />
+      <div>{products.length} tk </div>
 
       <div>
         <Button variant="secondary" onClick={sorteeriAZ}>{t("sort.sorteeriAZ")}</Button>
@@ -72,23 +72,32 @@ function MaintainProducts() {
         <Button variant="secondary" onClick={sorteeriKasvav}>{t("sort.sorteeriKasvav")}</Button>
         <Button variant="secondary" onClick={sorteeriKahanev}>{t("sort.sorteeriKahanev")}</Button>
       </div>
-      {products.map(element =>
-        <div key={element.id}>
-          <img src={element.image} alt=""></img>
-          <div>{element.id}</div>
-          <div>{element.name}</div>
-          <div>{element.price} €</div>
-          <div>{element.description}</div>
-          <div>{element.category}</div>
-          <div>{element.active}</div>
-          <Link to={"/admin/edit-product/" + element.id}>
-            <button>Edit</button>
-          </Link>
-          <button onClick={() => deleteProduct(element.id)}>Delete</button>
-        </div>
-
+      <table>
+        <tr>
+          <th>Image</th>
+          <th>ID</th>
+          <th>name</th>
+          <th>price</th>
+          <th>description</th>
+          <th>category</th>
+          <th>Actions</th>
+        </tr>{products.map(element =>
+          <tr key={element.id} className={element.active === true ? "active-product" : "inactive-product"}>
+            <td><img className="image" src={element.image} alt=""></img></td>
+            <td> {element.id}</td>
+            <td> {element.name}</td>
+            <td> {element.price} €</td>
+            <td> {element.description}</td>
+            <td>  {element.category}</td>
+            <td><Link to={"/admin/edit-product/" + element.id}>
+              <button>Edit</button>
+            </Link>
+            <button onClick={() => deleteProduct(element.id)}>Delete</button>
+          </td>
+          </tr>
       )}
-    </div>
+    </table>
+    </div >
   )
 }
 

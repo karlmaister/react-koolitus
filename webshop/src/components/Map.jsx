@@ -15,6 +15,11 @@ L.Marker.prototype.options.icon = DefaultIcon;
 
 function Map(props) {
 
+    // function coordinateSetiing(coordinates) {
+    //     const lat =""
+    //     const long=""
+    //     return [lat,long];
+    // }
 
     return (
         <div>
@@ -28,6 +33,7 @@ function Map(props) {
                     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
 
                 />
+                {/* e => .map(<Marker position(coordinateSetting(e.coordinates))) */}
                 <Marker position={[59.42192815888897, 24.793352013686896]}>
                     <Popup>
                         Ülemiste keskus. <br /> Avatud 9-20

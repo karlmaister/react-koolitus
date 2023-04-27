@@ -6,7 +6,6 @@ import { t } from 'i18next';
 import { ToastContainer, toast } from 'react-toastify';
 // import Button from '@mui/material/Button';
 // import { Link } from 'react-router-dom';
-import "../../css/HomePage.css"
 import config from '../../data/config.json'
 
 
