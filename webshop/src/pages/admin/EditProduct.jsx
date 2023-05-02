@@ -4,24 +4,27 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { useRef } from 'react';
 import { useState } from 'react';
 import config from '../../data/config.json'
+import { Spinner } from 'react-bootstrap';
 
 function EditProduct() {
 
   const { id } = useParams();
 
   const [dbProducts, setDbProducts] = useState([]);
-  
+  const [isLoading, setLoading] = useState(true);
+
 
   useEffect(() => {
     fetch(config.productsDbUrl)
-    .then(res => res.json())
-    .then(json => {
-      // setProducts(json || []);
-      setDbProducts(json || []);
-    })
+      .then(res => res.json())
+      .then(json => {
+        // setProducts(json || []);
+        setDbProducts(json || []);
+        setLoading(false);
+      })
   }, []);
 
-  const found = dbProducts.find( element => element.id === Number(id) );
+  const found = dbProducts.find(element => element.id === Number(id));
 
   const idRef = useRef();
   const nameRef = useRef();
@@ -47,9 +50,9 @@ function EditProduct() {
     };
 
     dbProducts[index] = updateProduct;
-   
-    fetch(config.productsDbUrl,  
-      {"method": "PUT" , "body" : JSON.stringify(dbProducts)})
+
+    fetch(config.productsDbUrl,
+      { "method": "PUT", "body": JSON.stringify(dbProducts) })
       .then(() => navigate("/admin/maintain-products"));
   }
 
@@ -65,32 +68,35 @@ function EditProduct() {
     }
   }
 
+  if (isLoading === true) {
+    return <Spinner animation="grow" variant="danger"/>
+  }
 
 
   return (
     <div>
 
-      { idUnique === false && <div>Inserted ID is not unique!</div>}
+      {idUnique === false && <div>Inserted ID is not unique!</div>}
       {found !== undefined &&
-  <div>
-      <label> ID:</label>
-      <input ref={idRef} onChange={checkIdUniqueness} type="number" defaultValue={found.id}/> <br />
-      <label> Name:</label>
-      <input ref={nameRef} type="text" defaultValue={found.name}/> <br />
-      <label> Price:</label>
-      <input ref={priceRef} type="number" defaultValue={found.price}/> <br />
-      <label> Image:</label>
-      <input ref={imageRef} type="text" defaultValue={found.image}/> <br />
-      <label> Category:</label>
-      <input ref={categoryRef} type="text" defaultValue={found.category}/> <br />
-      <label> Description:</label>
-      <input ref={descriptionRef} type="text" defaultValue={found.description}/> <br />
-      <label> Active:</label>
-      <input ref={activeRef} type="checkbox" defaultChecked={found.active}/> <br />
-    <button disabled={idUnique === false} onClick={edit}>Edit</button> 
-    </div>
-}
-{found === undefined && <div>Product not found</div>}
+        <div>
+          <label> ID:</label>
+          <input ref={idRef} onChange={checkIdUniqueness} type="number" defaultValue={found.id} /> <br />
+          <label> Name:</label>
+          <input ref={nameRef} type="text" defaultValue={found.name} /> <br />
+          <label> Price:</label>
+          <input ref={priceRef} type="number" defaultValue={found.price} /> <br />
+          <label> Image:</label>
+          <input ref={imageRef} type="text" defaultValue={found.image} /> <br />
+          <label> Category:</label>
+          <input ref={categoryRef} type="text" defaultValue={found.category} /> <br />
+          <label> Description:</label>
+          <input ref={descriptionRef} type="text" defaultValue={found.description} /> <br />
+          <label> Active:</label>
+          <input ref={activeRef} type="checkbox" defaultChecked={found.active} /> <br />
+          <button disabled={idUnique === false} onClick={edit}>Edit</button>
+        </div>
+      }
+      {found === undefined && <div>Product not found</div>}
     </div>
   )
 }

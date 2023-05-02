@@ -43,3 +43,13 @@ margin: 5px;
   width: 100px;
   height: 100px;
 }
+
+.bg-dark {
+  background-color: lightslategray !important;
+}
+
+.carousel {
+  position: relative;
+  width: 500px;
+  margin: auto;
+}

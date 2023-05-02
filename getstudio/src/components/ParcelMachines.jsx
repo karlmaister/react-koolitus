@@ -18,7 +18,7 @@ function ParcelMachines() {
     {parcelMachines
     .filter(element => element.NAME !== "1. eelistus Omnivas")
     .filter(element => element.A0_NAME === "EE")
-    .map(element => <option key={element.NAME}> {element.NAME}</option>)}
+    .map(element => <option>{element.NAME}</option>)}
     </select>
     </div>
   )

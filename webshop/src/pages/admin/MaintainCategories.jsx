@@ -39,7 +39,8 @@ function MaintainCategories() {
     <input ref={categoryRef} type="text" /><br />
     <button onClick={add}>Add</button><br />
 {categories.map((e,index) =>
-   <div>{e.name}
+   <div key={index}>
+    {e.name}
    <button onClick={() => deleteCategory(index)}>X</button>
    </div>)}
 

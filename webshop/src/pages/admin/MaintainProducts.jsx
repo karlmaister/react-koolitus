@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import config from '../../data/config.json'
 import { t } from 'i18next';
+import { Spinner } from 'react-bootstrap';
 
 
 
@@ -12,6 +13,7 @@ function MaintainProducts() {
 
   const [products, setProducts] = useState([]);
   const [dbProducts, setDbProducts] = useState([]);
+  const [isLoading, setLoading] = useState(true);
 
   const searchRef = useRef();
 
@@ -21,6 +23,7 @@ function MaintainProducts() {
       .then(json => {
         setProducts(json || []);
         setDbProducts(json || []);
+        setLoading(false);
       })
   }, []);
 
@@ -60,6 +63,11 @@ function MaintainProducts() {
     setProducts(result)
   }
 
+  if (isLoading === true) {
+    return <Spinner variant="success" animation="grow" />
+  }
+
+
   return (
     <div>
 
@@ -73,15 +81,18 @@ function MaintainProducts() {
         <Button variant="secondary" onClick={sorteeriKahanev}>{t("sort.sorteeriKahanev")}</Button>
       </div>
       <table>
-        <tr>
-          <th>Image</th>
-          <th>ID</th>
-          <th>name</th>
-          <th>price</th>
-          <th>description</th>
-          <th>category</th>
-          <th>Actions</th>
-        </tr>{products.map(element =>
+        <thead>
+          <tr>
+            <th>Image</th>
+            <th>ID</th>
+            <th>name</th>
+            <th>price</th>
+            <th>description</th>
+            <th>category</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>{products.map(element =>
           <tr key={element.id} className={element.active === true ? "active-product" : "inactive-product"}>
             <td><img className="image" src={element.image} alt=""></img></td>
             <td> {element.id}</td>
@@ -92,11 +103,12 @@ function MaintainProducts() {
             <td><Link to={"/admin/edit-product/" + element.id}>
               <button>Edit</button>
             </Link>
-            <button onClick={() => deleteProduct(element.id)}>Delete</button>
-          </td>
+              <button onClick={() => deleteProduct(element.id)}>Delete</button>
+            </td>
           </tr>
-      )}
-    </table>
+        )}
+        </tbody>
+      </table>
     </div >
   )
 }

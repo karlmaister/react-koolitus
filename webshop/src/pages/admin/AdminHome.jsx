@@ -1,7 +1,6 @@
 import React from 'react'
 import Button from 'react-bootstrap/Button';
 import { Link } from 'react-router-dom';
-import { useTransition } from 'i18next';
 import { useTranslation } from 'react-i18next';
 
 export default function AdminHome() {

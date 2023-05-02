@@ -1,0 +1,35 @@
+{
+    "nav": {
+        "admin": "Admin vaatesse",
+        "contact": "Kontakt",
+        "gallery": "Galerii",
+        "cart": "Ostukorv",
+        "products": "Tooted"
+    },
+    "maintain-categories": "Halda Kategooria",
+    "maintain-shops": "Halda Poed",
+    "add-product": "Lisa Toode",
+    "maintain-products": "Halda Tooted",
+    "sort": {
+        "sorteeriAZ": "Sorteeri A-Z",
+        "sorteeriZA": "Sorteeri Z-A",
+        "sorteeriKasvav": "Sorteeri Kasvav",
+        "sorteeriKahanev": "Sorteeri Kahanev"
+    },
+    "total": "Kokku",
+    "clearcart": "Tühjenda",
+    "count": "Tooteid korvis",
+    "add_to_cart": "Lisa ostukorvi",
+    "filter_motorcycle": "Filtreeri Mootorrattad",
+    "add_product": "Lisa toode",
+    "name": "Nimi",
+    "price": "Hind",
+    "image": "Pilt",
+    "category": "Kategooria",
+    "description": "Kirjeldus",
+    "active": "Aktiivne",
+    "id_error": "See ID on kasutusel",
+    "product_added": "Toode lisatud ",
+    "empty":"Ostukorv tühi",
+    "pay":"Maksa"
+}
