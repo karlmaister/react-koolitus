@@ -1,0 +1,21 @@
+  
+  /* Stiil FAQ-leheküljele */
+  .faq-page {
+    background-color: #f7f7f7;
+    padding: 40px;
+    border-radius: 5px;
+  }
+  
+  .faq-page h1 {
+    color: #333;
+  }
+  
+  .faq-page h2 {
+    color: #555;
+  }
+  
+  .faq-page p {
+    color: #777;
+  }
+  
+  
