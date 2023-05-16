@@ -28,7 +28,7 @@ const MarketingIdeaForm = () => {
 
   return (
     <div>
-      <h1>Looge turundusklippe oma idee põhjal</h1>
+      
       <Form onSubmit={handleSubmit} className="form-forms">
         <Form.Group controlId="name">
           <TextField id="outlined-basic" label="Sisestage oma nimi"variant="outlined" >

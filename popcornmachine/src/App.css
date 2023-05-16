@@ -25,14 +25,13 @@ th {
 }
 
 
-.bg-dark {
-  background-color: lightslategray;
-  opacity: 60%;
+.bg-light {
+  background-color: rgb(255, 255, 255) !important;
+
 }
 
 
 .app-background {
-  background-image: url(/public/back.png);
   height: 100vh;
   width: 100vw;
   background-repeat: no-repeat;
@@ -41,14 +40,6 @@ th {
   background-size: cover;
 }
 
-
-.intro {
-  padding-top: 100px;
-  margin-left: 100px;
-  margin-right: 100px;
-  padding-bottom: 30px;
-  text-align: center;
-}
 
 .form-login {
   position: fixed;
@@ -71,14 +62,170 @@ th {
 
 .button-1 {
   background-color: transparent;
-  color: antiquewhite;
+  color: rgb(0, 0, 0);
   border-radius: 10px;
   padding: 10px;
   }
   
   .button-1:hover {
     background-color: transparent;
-    color: antiquewhite;
+    color: rgb(255, 5, 5);
     border-radius: 10px;
     padding: 30px;
     }
+
+  
+  
+  .center-con {
+      display: flex;
+      height: 10vh;
+      align-items: center;
+      justify-content: center;
+  }
+  
+  .round {
+      position: relative;
+      border: 3px solid #fff;
+      width: 100px;
+      height: 100px;
+      border-radius: 100%;
+  }
+  
+  span {
+      z-index: 999;
+      height: 3px;
+      margin:1px;
+      width: 30px;
+      background: #fff;
+      transition: 0.4s ease;
+  }
+  
+  span:first-child {
+      display: block;
+      position: absolute;
+      transform: rotate(45deg);
+      left: 25%;
+      bottom: 35%;
+  }
+  
+  span:nth-child(2) {
+      display: block;
+      position: absolute;
+      transform: rotate(-45deg);
+      left: 45%;
+      bottom: 35%;
+  }
+  
+  span:nth-child(3) {
+      display: block;
+      position: absolute;
+      transform: rotate(45deg);
+      left: 25%;
+      bottom: 54%;
+  }
+  
+  span:nth-child(4) {
+      display: block;
+      position: absolute;
+      transform: rotate(-45deg);
+      left: 45%;
+      bottom: 54%;
+  }
+  
+  .round:hover span:nth-child(1) {
+      transform: rotate(-135deg);
+  }
+  
+  .round:hover span:nth-child(2) {
+      transform: rotate(135deg);
+  }
+  
+  .round:hover span:nth-child(3) {
+      transform: rotate(225deg);
+  }
+  
+  .round:hover span:nth-child(4) {
+      transform: rotate(-225deg);
+  }
+
+  .account-selection {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+    padding-bottom: 200px;
+    gap: 20px;
+  }
+
+
+  .services-container {
+    text-align: center;
+  }
+  
+  .service-images {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding-top: 20px;
+  }
+  
+  .service {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .service img {
+    width: 250px;
+    height: 250px;
+    object-fit: cover;
+  }
+  
+  .service p {
+    margin-top: 10px;
+    font-weight: bold;
+  }
+  
+  .service img:hover {
+    cursor: pointer;
+    opacity: 70%;
+  }
+
+  @media (max-width: 700px) {
+    .form-login {
+      right: 20%;
+    }
+  
+    .form-forms {
+      margin-left: 20px;
+      margin-right: 20px;
+    }
+  
+    .button-1:hover {
+      padding: 10px;
+    }
+  }
+  
+  /* Mobile-friendly styles for screens below 340px */
+  
+  @media (max-width: 340px) {
+    .form-login {
+      right: 10%;
+    }
+  
+    .form-forms {
+      margin-left: 10px;
+      margin-right: 10px;
+    }
+  
+    .button-1 {
+      padding: 5px;
+    }
+  
+    .button-1:hover {
+      padding: 5px;
+    }
+  }

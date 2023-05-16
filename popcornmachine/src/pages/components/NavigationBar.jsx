@@ -28,24 +28,30 @@ function NavigationBar() {
       navigate("/");
     }
 
+    const path = window.location.pathname;
+
   return (
     <div>
 
-      <Navbar bg="dark" variant="dark">
+      <Navbar collapseOnSelect expand="lg" bg="light" variant="light">
         <Container>
-          <Navbar.Brand as={Link} to="/"> Popcornmachine</Navbar.Brand>
-          <Nav className="me-auto">
+          <Navbar.Brand as={Link} to="/"> <img src="https://www.arsenalproduction.house/img/logo.png" alt="arsenalvideo"></img></Navbar.Brand>
+          {path !== '/' && <Navbar.Toggle aria-controls="responsive-navbar-nav" />}
+          <Navbar.Collapse id="responsive-navbar-nav">
+          {path !== '/' && <Nav className="me-auto">
             {loggedIn === true && <Nav.Link as={Link} to="/selfservice">{t("nav.selfservice")}</Nav.Link>}
-            <Nav.Link as={Link} to="/forms">{t("nav.forms")}</Nav.Link>
             <Nav.Link as={Link} to="/packages">{t("nav.packages")}</Nav.Link>
 
             {loggedIn !== true ? 
-         <Nav.Link as={Link} to="/login">Logi sisse</Nav.Link>
-         :  <button onClick={logout}> Logi välja</button>}
-          </Nav>
+         <Nav.Link as={Link} to="/login">{t("nav.login")}</Nav.Link>
+         :  <button onClick={logout}>{t("nav.logout")}</button>}
+          </Nav>}
          
+        {path !== '/' && <>
           <img className="langicon" alt="" src="/estonia.png" onClick={() => updateLanguage("ee")}/>
           <img className="langicon" alt="" src="/uk.png" onClick={() => updateLanguage("en")}/>
+          </>}
+          </Navbar.Collapse>
         </Container>
 
       </Navbar>

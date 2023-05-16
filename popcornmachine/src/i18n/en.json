@@ -5,7 +5,9 @@
         "kkk": "FAQ",
         "cart": "Cart",
         "forms": "Send a form",
-        "packages": "Packages"
+        "packages": "Packages",
+        "login":"Login",
+        "logout":"Logout"
     },
     "maintain-categories": "Maintain Categories",
     "maintain-shops": "Maintain Shops",

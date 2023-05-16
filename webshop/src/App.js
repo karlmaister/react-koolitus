@@ -18,6 +18,7 @@ import Login from './pages/auth/Login';
 import Signup from './pages/auth/Signup';
 import { useContext } from 'react';
 import { AuthContext } from './store/AuthContext';
+import Profile from './pages/auth/Profile';
 
 
 
@@ -40,6 +41,7 @@ function App() {
         <Route path="shops" element={<Shops />} />
 
         {loggedIn === true && <>
+          <Route path="profile" element={<Profile />} />
           <Route path="admin" element={<AdminHome />} />
           <Route path="admin/add-product" element={<AddProduct />} />
           <Route path="admin/edit-product/:id" element={<EditProduct />} />

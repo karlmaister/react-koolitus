@@ -14,7 +14,7 @@ function ParcelMachines() {
 
   return (
     <div>
-       <select>
+       <select style={{"font-size": "14px"}}>
     {parcelMachines
     .filter(element => element.NAME !== "1. eelistus Omnivas")
     .filter(element => element.A0_NAME === "EE")

@@ -19,19 +19,55 @@ function AddProduct() {
   const descriptionRef = useRef();
   const activeRef = useRef();
   const [dbProducts, setDbProducts] = useState([]);
-
   const [idUnique, setIdUnique] = useState(true);
+  const [categories, setCategories] = useState([]);
+
+  useEffect(() => {
+    fetch(config.categoriesDbUrl)
+      .then(res => res.json())
+      .then(json => setCategories(json || []));
+  }, []);
 
   useEffect(() => {
     fetch(config.productsDbUrl)
-    .then(res => res.json())
-    .then(json => {
-      // setProducts(json || []);
-      setDbProducts(json || []);
-    })
+      .then(res => res.json())
+      .then(json => {
+        // setProducts(json || []);
+        setDbProducts(json || []);
+      })
   }, []);
 
   function add() {
+
+    if (idRef.current.value === "") {
+      toast("id not filled")
+      return;
+    }
+    if (/^\d+$/.test(idRef.current.value) === false) {
+      toast("id not filled")
+      return;
+    }
+
+    if (nameRef.current.value === "") {
+      toast("name not filled")
+      return;
+    }
+    if (priceRef.current.value === "") {
+      toast("price not filled")
+      return;
+    }
+    if (/^\d+$/.test(priceRef.current.value) === false) {
+      toast("price only in numbers")
+      return;
+    }
+    if (descriptionRef.current.value === "") {
+      toast("description not filled")
+      return;
+    }
+    if (categoryRef.current.value === "") {
+      toast("Category not selected")
+      return;
+    }
 
     const addProduct = {
       "id": Number(idRef.current.value),
@@ -46,7 +82,14 @@ function AddProduct() {
     dbProducts.push(addProduct);
     toast(t("product_added"));
     fetch(config.productsDbUrl,
-      {"method": "PUT" , "body" : JSON.stringify(dbProducts)})
+      { "method": "PUT", "body": JSON.stringify(dbProducts) })
+    idRef.current.value = "";
+    nameRef.current.value = "";
+    priceRef.current.value = "";
+    imageRef.current.value = "";
+    categoryRef.current.value = "";
+    descriptionRef.current.value = "";
+    activeRef.current.checked = false;
 
   }
 
@@ -75,7 +118,11 @@ function AddProduct() {
       <label> {t("image")}:</label>
       <input ref={imageRef} type="text" /> <br />
       <label> {t("category")}:</label>
-      <input ref={categoryRef} type="text" /> <br />
+      {/* <input ref={categoryRef} type="text" /> <br /> */}
+      <select ref={categoryRef}>
+      <option value="">vali kategooria!</option>
+        {categories.map(category => <option key={category.name}>{category.name}</option>)}
+        </select> <br />
       <label> {t("description")}:</label>
       <input ref={descriptionRef} type="text" /> <br />
       <label> {t("active")}:</label>

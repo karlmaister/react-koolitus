@@ -36,6 +36,14 @@ function EditProduct() {
   const navigate = useNavigate();
   const [idUnique, setIdUnique] = useState(true);
 
+  const [categories, setCategories] = useState([]);
+
+  useEffect(() => {
+    fetch(config.categoriesDbUrl)
+      .then(res => res.json())
+      .then(json => setCategories(json || []));
+  }, []);
+
   function edit() {
     const index = dbProducts.findIndex(element => element.id === Number(id));
 
@@ -88,7 +96,10 @@ function EditProduct() {
           <label> Image:</label>
           <input ref={imageRef} type="text" defaultValue={found.image} /> <br />
           <label> Category:</label>
-          <input ref={categoryRef} type="text" defaultValue={found.category} /> <br />
+          <select ref={categoryRef} defaultValue={found.catergory}>
+            <option value="">vali kategooria!</option>
+        {categories.map(category => <option key={category.name}>{category.name}</option>)}
+        </select> <br />
           <label> Description:</label>
           <input ref={descriptionRef} type="text" defaultValue={found.description} /> <br />
           <label> Active:</label>

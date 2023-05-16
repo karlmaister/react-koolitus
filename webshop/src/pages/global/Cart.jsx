@@ -13,7 +13,7 @@ import { CartSumContext } from '../../store/CartSumContext';
 function Cart() {
 
   const [cart, updateCart] = useState(JSON.parse(localStorage.getItem("cart")) || []);
-  const {setCartSum} = useContext(CartSumContext)
+  const { setCartSum } = useContext(CartSumContext)
 
 
   function clearCart() {
@@ -55,7 +55,7 @@ function Cart() {
     setCartSum(calcSum())
   }
 
- 
+
 
   return (
     <div>
@@ -67,25 +67,33 @@ function Cart() {
           {cart.length === 0 && <div>{t("empty")} </div>}
         </div>}
       {cart.map((element, qnr) =>
-        <div className={styles.product} key={element.product.id}>
-          <img className={styles.image} src={element.product.image} alt=''></img>
-          <div className={styles.name}>{element.product.name}</div>
-          <div className={styles.price}>{element.product.price}</div>
-          <div className={styles.quantity}>
+        <div className={styles.product_wrapper}>
+          <div className={styles.product} key={element.product.id}>
+            <img className={styles.image} src={element.product.image} alt=''></img>
+            <div className={styles.name}>{element.product.name}</div>
+            <div className={styles.price}>{element.product.price} € </div>
+            <div className={styles.quantity}>
+              <img className={styles.button} onClick={() => increase(qnr)} src="/plus.png" alt=""></img>
+              <div >{element.quantity}</div>
+              <img className={styles.button} onClick={() => decrease(qnr)} src="/minus.png" alt=""></img>
+            </div>
+            <div className={styles.total}>{element.product.price * element.quantity.toFixed(2)} € </div>
+            <img className={styles.button} onClick={() => deleteItem(qnr)} src="/delete-button.png" alt=""></img>
+          </div>
+          <div className={styles.mobile_row}>
             <img className={styles.button} onClick={() => increase(qnr)} src="/plus.png" alt=""></img>
             <div >{element.quantity}</div>
             <img className={styles.button} onClick={() => decrease(qnr)} src="/minus.png" alt=""></img>
           </div>
-          <div className={styles.total}>{element.product.price * element.quantity.toFixed(2)}</div>
-          <img  className={styles.button} onClick={() => deleteItem(qnr)}  src="/delete-button.png" alt=""></img>
         </div>
 
       )}
-  {cart.lenght > 0 && <div>
-      <ParcelMachines/>
-        <Payment sum={calcSum()}/>
-        </div>}
-     
+
+      {cart.length > 0 &&
+        <>
+          <ParcelMachines />
+          <Payment sum={calcSum()} />
+        </>}
       <ToastContainer position='bottom-center'></ToastContainer>
     </div>
   )

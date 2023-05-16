@@ -53,3 +53,13 @@ margin: 5px;
   width: 500px;
   margin: auto;
 }
+
+
+@media only screen and (max-width: 500px) {
+  .carousel {
+    position: relative;
+    width: 400px;
+    margin: auto;
+  }
+
+}

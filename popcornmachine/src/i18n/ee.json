@@ -5,7 +5,9 @@
         "kkk": "KKK",
         "cart": "Ostukorv",
         "forms": "Täida vorm",
-        "packages": "Paketid"
+        "packages": "Paketid",
+        "login":"Logi sisse",
+        "logout":"Logi välja"
     },
     "maintain-categories": "Halda Kategooria",
     "maintain-shops": "Halda Poed",
