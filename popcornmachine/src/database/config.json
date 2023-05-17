@@ -1,0 +1,5 @@
+
+{
+    "clientsDB": "https://arsenalvideo-97205-default-rtdb.europe-west1.firebasedatabase.app/clients.json",
+    "productsDB":"https://arsenalvideo-97205-default-rtdb.europe-west1.firebasedatabase.app/products.json"
+}   

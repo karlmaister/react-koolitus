@@ -1,11 +1,21 @@
-import React, { useState } from 'react';
+import React, { useContext } from 'react'
+import { ToastContainer } from 'react-toastify';
+import Product from '../pages/components/Product';
+import styles from "../css/HomePage.module.css"
+import { useState, useEffect } from 'react'
+import config from '../database/config.json'
+import { Spinner } from 'react-bootstrap';
+import { CartSumContext } from './components/CartSumContext';
 import { Form } from 'react-bootstrap';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import IconButton from '@mui/material/IconButton';
 import PhotoCamera from '@mui/icons-material/PhotoCamera';
 
-const BasicPackage = () => {
+
+
+function HomePage() {
+
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [idea, setIdea] = useState('');
@@ -26,21 +36,28 @@ const BasicPackage = () => {
     setLogo(file);
   };
 
+  const [products, setProducts] = useState([]);
+  const [dbProducts, setDbProducts] = useState([]);
+  const [isLoading, setLoading] = useState(true);
+  const { cartSum } = useContext(CartSumContext);
+
+  useEffect(() => {
+    fetch(config.productsDB)
+      .then(res => res.json())
+      .then(json => {
+        setProducts(json || []);
+        setDbProducts(json || []);
+        setLoading(false);
+      })
+  }, []);
+
+  if(isLoading === true) {
+    return <Spinner />
+  }
+
+
   return (
-    <div >
-      <h1>For private accounts we have created a simple process</h1>
-      <div className="how-it-works-section">
-
-      <div className="left">
-          <h2>How It Works</h2>
-          <p>Just fill out the form, it's that easy.</p>  <br />
-          <p>1. Enter your name and e-mail where you will receice your video</p> <br />
-          <p>2. Describe your idea</p>  <br />
-          <p>3. Upload your branding material</p>  <br />
-          <p>4. Receive your video in 48h</p>
-        </div>
-
-        <div className="right">
+    <div>
       <Form onSubmit={handleSubmit} className="form-forms">
         <Form.Group controlId="name">
           <TextField id="outlined-basic" label="Sisestage oma nimi"variant="outlined" >
@@ -83,19 +100,23 @@ const BasicPackage = () => {
         <Form.Group controlId="logo">
         <IconButton color="primary" aria-label="upload picture" component="label">
   <input hidden accept="image/*" type="file" />
-  Upload
+  Logo
   <PhotoCamera />
 </IconButton>
         </Form.Group>
 
-        <Button variant="primary" type="submit">
-          Esita
-        </Button>
-      </Form>
+      <div>Combine your services</div>
+      <div>
+        <div className={styles.products}>
+          {products.map((element) =>
+            <Product key={element.id} element={element} />
+          )}
+        </div>
+        <div>Ostukorvi summa: {cartSum} €</div>
+        <ToastContainer position='bottom-center'></ToastContainer>
+      </div>
+    </Form>
     </div>
-    </div>
-    </div>
-  );
+  )
 }
-
-export default BasicPackage;
+export default HomePage

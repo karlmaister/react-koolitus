@@ -4,8 +4,6 @@ import { Routes, Route} from 'react-router-dom';
 import './App.css';
 import HomePage from "./pages/HomePage"
 import SelfService from './pages/SelfService';
-import KKK from './pages/KKK'
-import Contacts from "./pages/Contacts"
 import 'react-toastify/dist/ReactToastify.css';
 import NavigationBar from './pages/components/NavigationBar';
 import Login from './pages/auth/Login';
@@ -16,8 +14,8 @@ import Premium from './pages/Premium';
 import Basic from './pages/Basic';
 import Forms from './pages/Forms'
 import PackageSelectionPage from './pages/Packages';
-
-
+import Admin from './pages/Admin';
+import Cart from './pages/Cart';
 function App() {
 
   const { loggedIn } = useContext(AuthContext);
@@ -30,12 +28,13 @@ function App() {
 
 <Routes>
   <Route path="" element={<HomePage />} />
-  <Route path="contacts" element={<Contacts />} />
-  <Route path="kkk" element={<KKK />} />
   <Route path="basic" element={<Basic />} />
   <Route path="premium" element={<Premium />} />
   <Route path="forms" element={<Forms />} />
   <Route path="packages" element={<PackageSelectionPage />} />
+  <Route path="admin" element={<Admin />} />
+  <Route path="cart" element={<Cart />} />
+
 
 
   {loggedIn === true && <>

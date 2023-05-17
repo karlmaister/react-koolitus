@@ -1,7 +1,8 @@
 import React from 'react';
-import BackgroundVideo from './components/BackgroundVideo';
 import { Link } from 'react-router-dom';
 import Services from './components/Services';
+import Footer from './components/Footer';
+
 
 const HomePage = () => {
 
@@ -23,6 +24,7 @@ const HomePage = () => {
         <div className="overlay"></div>
         <div className="content">
           <h1>Arsenal Video your digital media partner</h1>
+          <img className= "home-page-image" src="https://www.arsenalproduction.house/img/logo.png" alt="arsenalvideo"></img>
         </div>
         <section className="carousel-section">
           <h2>Choose Your Service package</h2>
@@ -78,16 +80,25 @@ const HomePage = () => {
         </div>
       </section>
 
-      <div className="account-selection">
-        <h2>Choose Your Account Type</h2>
-        <div>
-          <Link to='../basic'><button className="button-1">Private Account</button></Link>
-          <Link to='../premium'><button className="button-1">Business Account</button></Link>
-
+    <section className="business-package">
+    <div className="right">
+          <img  className="home-page-image" src="/image3.jpg" alt="" />
         </div>
-      </div>
+        <div className="left">
+          <h2>Why Choose Our Business Package:</h2>
+    <br />
+    <p>- Extensive market research to identify your target audience</p>
+    <p>- Customized marketing strategies tailored to your business</p>
+    <p>- Professional branding and logo design services</p>
+    <p>- High-quality video production to showcase your brand</p>
+    <p>- Fast turnaround time of 48 hours for video delivery</p>
 
-      {/* Section 3: Carousel */}
+    <Link to="../premium"><button className="button-explore">Explore our business solutions</button></Link>
+        </div>
+       
+      </section>
+
+<Footer/>
 
     </div>
   );
