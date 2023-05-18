@@ -1,12 +1,14 @@
 import React from 'react'
-// import productsFromFile from "../../data/products.json"
 import { useState, useRef, useEffect } from 'react'
-// import cartFromFile from '../../data/cart.json'
 import { t } from 'i18next';
 import { ToastContainer, toast } from 'react-toastify';
-// import Button from '@mui/material/Button';
-// import { Link } from 'react-router-dom';
 import config from '../../data/config.json'
+import FileUpload from '../../components/FileUpload';
+import Radio from '@mui/material/Radio';
+import RadioGroup from '@mui/material/RadioGroup';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import FormControl from '@mui/material/FormControl';
+import FormLabel from '@mui/material/FormLabel';
 
 
 function AddProduct() {
@@ -21,6 +23,8 @@ function AddProduct() {
   const [dbProducts, setDbProducts] = useState([]);
   const [idUnique, setIdUnique] = useState(true);
   const [categories, setCategories] = useState([]);
+  const [imageUrl, setImageUrl] = useState("");
+  const [imageUpload, setImageUpload] = useState('file');
 
   useEffect(() => {
     fetch(config.categoriesDbUrl)
@@ -73,11 +77,13 @@ function AddProduct() {
       "id": Number(idRef.current.value),
       "name": nameRef.current.value,
       "price": Number(priceRef.current.value),
-      "image": imageRef.current.value,
+      "image": imageUpload === "file" ? imageUrl : imageRef.current.value,
       "category": categoryRef.current.value,
       "description": descriptionRef.current.value,
       "active": activeRef.current.value.checked,
     }
+
+    // adnembaasi lisamine
 
     dbProducts.push(addProduct);
     toast(t("product_added"));
@@ -86,7 +92,7 @@ function AddProduct() {
     idRef.current.value = "";
     nameRef.current.value = "";
     priceRef.current.value = "";
-    imageRef.current.value = "";
+    imageUpload === "file" ? setImageUrl("") : imageRef.current.value = "";
     categoryRef.current.value = "";
     descriptionRef.current.value = "";
     activeRef.current.checked = false;
@@ -106,6 +112,10 @@ function AddProduct() {
 
   }
 
+  const handleChange = (event) => {
+    setImageUpload(event.target.value);
+  };
+
   return (
     <div>
 
@@ -116,13 +126,31 @@ function AddProduct() {
       <label> {t("price")}:</label>
       <input ref={priceRef} type="number" /> <br />
       <label> {t("image")}:</label>
+      <FormControl>
+        <FormLabel id="demo-controlled-radio-buttons-group"></FormLabel>
+        <RadioGroup
+          aria-labelledby="demo-controlled-radio-buttons-group"
+          name="controlled-radio-buttons-group"
+          value={imageUpload}
+          onChange={handleChange}
+        >
+          <FormControlLabel value="file" control={<Radio />} label="File" />
+          <FormControlLabel value="url" control={<Radio />} label="Url" />
+        </RadioGroup>
+      </FormControl>
+
+      {imageUpload === "url" && <> <br />
       <input ref={imageRef} type="text" /> <br />
+      </>}
+
+      {imageUpload === "file" &&<FileUpload onSendPictureUrl={setImageUrl} />}
+
       <label> {t("category")}:</label>
       {/* <input ref={categoryRef} type="text" /> <br /> */}
       <select ref={categoryRef}>
-      <option value="">vali kategooria!</option>
+        <option value="">vali kategooria!</option>
         {categories.map(category => <option key={category.name}>{category.name}</option>)}
-        </select> <br />
+      </select> <br />
       <label> {t("description")}:</label>
       <input ref={descriptionRef} type="text" /> <br />
       <label> {t("active")}:</label>

@@ -1,14 +1,18 @@
 import Button from '@mui/material/Button';
 
-function FilterButtons({ dbProducts, setProducts, categories }) {
+function FilterButtons({ dbProducts, setFilteredProducts, categories, setProducts, setActivePage }) {
 
 function resetFilters() {
-  setProducts(dbProducts);
+  setFilteredProducts(dbProducts.slice());
+  setProducts(dbProducts.slice(0,20));
+  setActivePage(1);
 }
 
 function filterByCategory(categoryClicked) {
   const result = dbProducts.filter(element => element.category === categoryClicked);
-  setProducts(result);
+  setFilteredProducts(result);
+  setProducts(result.slice(0,20));
+  setActivePage(1);
 }
 
 

@@ -60,21 +60,6 @@ th {
   text-align: center;
 }
 
-.button-1 {
-  background-color: transparent;
-  color: rgb(0, 0, 0);
-  border-radius: 10px;
-  padding: 10px;
-  }
-  
-  .button-1:hover {
-    background-color: transparent;
-    color: rgb(255, 5, 5);
-    border-radius: 10px;
-    padding: 30px;
-    }
-
-  
   
   .center-con {
       display: flex;
@@ -207,6 +192,19 @@ th {
     .button-1:hover {
       padding: 10px;
     }
+
+    .cart-container {
+      display:block;
+      margin-left: 15%;
+      border: solid 2px lightblue;
+      border-radius: 5px;
+      padding: 15px;
+      position: relative;
+    }
+
+    .scroll-button {
+      display: none;
+    }
   }
   
   /* Mobile-friendly styles for screens below 340px */
@@ -227,6 +225,15 @@ th {
   
     .button-1:hover {
       padding: 5px;
+    }
+
+    .cart-container {
+      display:inline-block;
+      margin-left: 20%;
+      border: solid 2px lightblue;
+      border-radius: 5px;
+      padding: 15px;
+      position:relative;
     }
   }
 

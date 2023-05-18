@@ -6,6 +6,10 @@ td, th {
   border: 1px solid black;
 }
 
+table {
+  width: 100%;
+}
+
 .langicon {
 width: 30px;
 height: 30px;

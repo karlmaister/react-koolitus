@@ -1,30 +1,34 @@
 import React from 'react'
 import { t } from 'i18next';
 import Button from '@mui/material/Button';
-import { useState } from 'react'
+
 
 function SortButtons(props) {
 
   
 
   function sorteeriAZ() {
-    props.products.sort((a, b) => a.name.localeCompare(b.name));
-    props.setProducts(props.products.slice())
+    props.filteredProducts.sort((a, b) => a.name.localeCompare(b.name));
+    props.setFilteredProducts(props.filteredProducts.slice());
+    props.setProducts(props.filteredProducts.slice(20*props.page-20,20*props.page))
   }
 
   function sorteeriZA() {
-    props.products.sort((a, b) => b.name.localeCompare(a.name));
-    props.setProducts(props.products.slice())
+    props.filteredProducts.sort((a, b) => b.name.localeCompare(a.name));
+    props.setFilteredProducts(props.filteredProducts.slice());
+    props.setProducts(props.filteredProducts.slice(20*props.page-20,20*props.page))
   }
 
   function sorteeriKasvav() {
-    props.products.sort((a, b) => a.price - b.price);
-    props.setProducts(props.products.slice())
+    props.filteredProducts.sort((a, b) => a.price - b.price);
+    props.setFilteredProducts(props.filteredProducts.slice());
+    props.setProducts(props.filteredProducts.slice(20*props.page-20,20*props.page))
   }
 
   function sorteeriKahanev() {
-    props.products.sort((a, b) => b.price - a.price);
-    props.setProducts(props.products.slice())
+    props.filteredProducts.sort((a, b) => b.price - a.price);
+    props.setFilteredProducts(props.filteredProducts.slice());
+    props.setProducts(props.filteredProducts.slice(20*props.page-20,20*props.page))
   }
 
 
