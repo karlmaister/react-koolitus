@@ -13,9 +13,12 @@ import { AuthContext } from '../src/pages/auth/AuthContext';
 import Premium from './pages/Premium';
 import Basic from './pages/Basic';
 import Forms from './pages/Forms'
-import PackageSelectionPage from './pages/Packages';
 import Admin from './pages/Admin';
 import Cart from './pages/Cart';
+import AboutUs from './pages/AboutUs';
+import BusinessAccount from './pages/BusinessAccount';
+import PrivateAccount from './pages/PrivateAccount';
+import Portfolio from './pages/Portfolio';
 function App() {
 
   const { loggedIn } = useContext(AuthContext);
@@ -27,13 +30,18 @@ function App() {
 
 
 <Routes>
-  <Route path="" element={<HomePage />} />
+  <Route path="" element={<PrivateAccount />} />
   <Route path="basic" element={<Basic />} />
   <Route path="premium" element={<Premium />} />
   <Route path="forms" element={<Forms />} />
-  <Route path="packages" element={<PackageSelectionPage />} />
   <Route path="admin" element={<Admin />} />
   <Route path="cart" element={<Cart />} />
+  <Route path="private" element={<PrivateAccount />} />
+  <Route path="business" element={<BusinessAccount />} />
+  <Route path="aboutus" element={<AboutUs />} />
+  <Route path="portfolio" element={<Portfolio />} />
+  
+
 
 
 

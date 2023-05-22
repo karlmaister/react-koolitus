@@ -76,7 +76,7 @@ th {
       border-radius: 100%;
   }
   
-  span {
+  /* span {
       z-index: 999;
       height: 3px;
       margin:1px;
@@ -131,7 +131,7 @@ th {
   
   .round:hover span:nth-child(4) {
       transform: rotate(-225deg);
-  }
+  } */
 
   .account-selection {
     display: flex;
@@ -193,17 +193,147 @@ th {
       padding: 10px;
     }
 
-    .cart-container {
-      display:block;
-      margin-left: 15%;
-      border: solid 2px lightblue;
-      border-radius: 5px;
-      padding: 15px;
-      position: relative;
-    }
-
     .scroll-button {
       display: none;
+    }
+
+    .form {
+      width: 100%;
+    }
+
+    .form-container {
+      display: inline;
+      width: 100%;
+    }
+    
+    .form-container h2 {
+      margin-bottom: 20px;
+    }
+    
+    .form-container label {
+      display: block;
+      margin-bottom: 10px;
+    }
+    
+    .form-container input[type="text"],
+    .form-container select {
+      width: 100%;
+      padding: 5px;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+    }
+    
+    .form-container textarea {
+      width: 100%;
+      padding: 8px;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+    }
+    
+    .form-container button[type="submit"] {
+      padding: 10px 20px;
+      background-color: #7b88ff;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+    .register{
+      background: -webkit-linear-gradient(left, #3931af, #00c6ff);
+      width: 100%;
+      padding: 1%;
+    }
+    .register-left{
+      text-align: center;
+      color: #fff;
+      margin-top: 1%;
+      
+    }
+    .register-left input{
+      border: none;
+      border-radius: 1.5rem;
+      padding: 2%;
+      width: 60%;
+      background: #f8f9fa;
+      font-weight: bold;
+      color: #383d41;
+      margin-top: 10%;
+      margin-bottom: 3%;
+      cursor: pointer;
+    }
+    .register-right{
+      background: #f8f9fa;
+      border-top-left-radius: 10% 50%;
+      border-bottom-left-radius: 10% 50%;
+    }
+    .register-left img{
+      margin-top: 1%;
+      margin-bottom: 1%;
+      width: 100%;
+      -webkit-animation: mover 2s infinite  alternate;
+      animation: mover 1s infinite  alternate;
+    }
+    @-webkit-keyframes mover {
+      0% { transform: translateY(0); }
+      100% { transform: translateY(-20px); }
+    }
+    @keyframes mover {
+      0% { transform: translateY(0); }
+      100% { transform: translateY(-20px); }
+    }
+    .register-left p{
+      font-weight: lighter;
+      padding: 12%;
+      margin-top: -9%;
+    }
+    .register .register-form{
+      padding: 10%;
+      margin-top: 0%;
+    }
+    .btnRegister{
+      float: right;
+      margin-top: 10%;
+      border: none;
+      border-radius: 1.5rem;
+      padding: 2%;
+      background: #0062cc;
+      color: #fff;
+      font-weight: 600;
+      width: 50%;
+      cursor: pointer;
+    }
+    .register .nav-tabs{
+      margin-top: 3%;
+      border: none;
+      background: #0062cc;
+      border-radius: 1.5rem;
+      width: 28%;
+      float: right;
+    }
+    .register .nav-tabs .nav-link{
+      padding: 2%;
+      height: 34px;
+      font-weight: 600;
+      color: #fff;
+      border-top-right-radius: 1.5rem;
+      border-bottom-right-radius: 1.5rem;
+    }
+    .register .nav-tabs .nav-link:hover{
+      border: none;
+    }
+    .register .nav-tabs .nav-link.active{
+      width: 100px;
+      color: #0062cc;
+      border: 2px solid #0062cc;
+      border-top-left-radius: 1.5rem;
+      border-bottom-left-radius: 1.5rem;
+    }
+    .register-heading{
+      text-align: center;
+      margin-top: 8%;
+      margin-bottom: -15%;
+      color: #495057;
     }
   }
   

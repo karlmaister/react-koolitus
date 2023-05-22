@@ -37,6 +37,8 @@ const OrderSummaryPopup = ({ selectedOptions, onClose, getPrice, getTotalPrice }
 <br />
         Order is submitted after payment
         <Payment sum={getTotalPrice()} />
+
+        
         <button onClick={onClose}>Back to change</button>
 
       </div>

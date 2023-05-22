@@ -14,7 +14,7 @@ import Slider from '@mui/material/Slider';
 import Footer from './components/Footer';
 
 
-const Premium = () => {
+const PrivateAccount = () => {
 
 
   const marks = [
@@ -225,68 +225,19 @@ const Premium = () => {
           <h3>Welcome private partner!</h3>
           <p>Here you can combine your personalized video service package</p>
           <iframe
-            width="560"
-            height="315"
+            
             src="https://player.vimeo.com/video/121097470?h=e3506ba6f1"
             title="How It Works Video"
             frameBorder="0"
             allow="autoplay; encrypted-media"
             allowFullScreen
           ></iframe>
-          <button className="scroll-button" onClick={handleScroll}>
-            <div className="center-con">
-              <div className="round">
-              </div>
-
-            </div>
-          </button>
         </div>
 
         <div className='register-right'>
 
           <div className='register-form'>
-            <div className='cart-container'>
-              <h2 className='register-heading'>Total</h2>
-              <p>Selected Options:</p>
-              <ul>
-                {selectedOptions.format && (
-                  <li> Format {selectedOptions.format} - {getPrice(selectedOptions.format)} EUR</li>
-                )}{selectedOptions.animation && (
-                  <>
-                  <li> Animation {selectedOptions.animation} - {getPrice(selectedOptions.animation)} EUR</li>
-                  <li> Video length {selectedOptions.videoLength} sek</li>
-                  </>
-                )}
-                {selectedOptions.logoDesign && <li>Logo Design {getPrice('logoDesign')} EUR</li>}
-                {selectedOptions.footageLink && (
-                  <li>Footage Link: {selectedOptions.footageLink}</li>
-                )}
-                {selectedOptions.needVideographer && <li>Need a Videographer {getPrice('needVideographer')} EUR</li>}
-                {selectedOptions.soundDesign && <li>Sound Design {getPrice('soundDesign')} EUR</li>}
-                {selectedOptions.voiceOver &&
-                  <>
-                    <li>Voice Over {getPrice('voiceOver')} EUR</li>
-                    <li>Voice: {selectedOptions.voice}</li>
-                    <li>Voice Style: {selectedOptions.voiceStyle}</li>
-                    </>
-                }
-                {selectedOptions.language && <li>Language: {selectedOptions.language}</li>}
-              </ul>
-              <p>Price: {getTotalPrice()} EUR</p>
-              
-              <div>
 
-                <button className="button-explore" onClick={handlePopupOpen}>Confirm and Pay</button>
-                {showPopup && (
-                  <OrderSummaryPopup
-                    selectedOptions={selectedOptions}
-                    onClose={handlePopupClose}
-                    getPrice={getPrice}
-                    getTotalPrice={getTotalPrice}
-                  />
-                )}
-              </div>
-            </div>
             <div className='form-container'>
               <h2 className='register-heading'>Form</h2>
               <form onSubmit={handleFormSubmit}>
@@ -306,6 +257,7 @@ const Premium = () => {
                     exclusive
                     onChange={handleFormatChange}
                     name="format"
+                    sx={{borderRadius: '30px', gap:'10px'}}
 
                   >
                     <ToggleButton value="" disabled>Select Format</ToggleButton>
@@ -335,7 +287,7 @@ const Premium = () => {
 
                 <br />
 
-                <Box sx={{ width: 380 }}>
+                <Box sx={{ width: 300}}>
                   Video length
                   <Slider
                     aria-label="Always visible"
@@ -535,16 +487,58 @@ const Premium = () => {
 
             </div>
 
+            <div className='cart-container'>
+              <h2 className='register-heading'>Total</h2>
+              <p>Selected Options:</p>
+              <ul>
+                {selectedOptions.format && (
+                  <li> Format {selectedOptions.format} - {getPrice(selectedOptions.format)} EUR</li>
+                )}{selectedOptions.animation && (
+                  <>
+                  <li> Animation {selectedOptions.animation} - {getPrice(selectedOptions.animation)} EUR</li>
+                  <li> Video length {selectedOptions.videoLength} sek</li>
+                  </>
+                )}
+                {selectedOptions.logoDesign && <li>Logo Design {getPrice('logoDesign')} EUR</li>}
+                {selectedOptions.footageLink && (
+                  <li>Footage Link: {selectedOptions.footageLink}</li>
+                )}
+                {selectedOptions.needVideographer && <li>Need a Videographer {getPrice('needVideographer')} EUR</li>}
+                {selectedOptions.soundDesign && <li>Sound Design {getPrice('soundDesign')} EUR</li>}
+                {selectedOptions.voiceOver &&
+                  <>
+                    <li>Voice Over {getPrice('voiceOver')} EUR</li>
+                    <li>Voice: {selectedOptions.voice}</li>
+                    <li>Voice Style: {selectedOptions.voiceStyle}</li>
+                    </>
+                }
+                {selectedOptions.language && <li>Language: {selectedOptions.language}</li>}
+              </ul>
+              <p>Price: {getTotalPrice()} EUR</p>
+              
+              <div>
 
+                <button className="button-explore" onClick={handlePopupOpen}>Confirm and Pay</button>
+                {showPopup && (
+                  <OrderSummaryPopup
+                    selectedOptions={selectedOptions}
+                    onClose={handlePopupClose}
+                    getPrice={getPrice}
+                    getTotalPrice={getTotalPrice}
+                  />
+                )}
+              </div>
+            </div>
           </div>
 
         </div>
 
       </div>
+      
       <Footer />
     </div>
 
   );
 };
 
-export default Premium;
+export default PrivateAccount;

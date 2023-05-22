@@ -139,6 +139,7 @@
 
 
 @media (max-width: 700px) {
+
   .how-it-works-section {
     flex-direction: column;
     padding: 20px;
@@ -178,8 +179,6 @@
   width: 50%;
   height: auto;
 }
-
-
 
 .form-container {
   display: inline-block;
@@ -222,13 +221,44 @@
 }
 
 .cart-container {
-  display:inline-block;
-  margin-left: 50%;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-end;
+  position: sticky;
+  bottom: 30px;
+  left: 10%;
   border: solid 2px lightblue;
   border-radius: 5px;
-  padding: 30px;
-  position:absolute;
+  padding: 10px 30px;
+  margin-left: 30px;
+  margin-top:60px;
+  margin-bottom:60px;
+  top: 20vh; /* Adjust the scroll threshold as needed */
 }
+
+iframe {
+  width:580px;
+  height:500px;
+}
+
+@media (max-width: 767px) {
+  .cart-container {
+    position: static;
+    align-self: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    right: auto;
+    left: auto;
+    z-index: 1;
+    margin-left: 15%;
+  }
+
+  iframe {
+    width:100%;
+  }
+}
+
+
 
 .cart-container h2 {
   margin-bottom: 10px;
@@ -263,7 +293,7 @@
 
 
 .register{
-  background: -webkit-linear-gradient(left, #3931af, #00c6ff);
+  background: -webkit-linear-gradient(left, #2A253D, #00c6ff);
   padding: 1%;
 }
 .register-left{
@@ -305,11 +335,13 @@
 }
 .register-left p{
   font-weight: lighter;
-  padding: 12%;
+  padding: 10%;
   margin-top: -9%;
 }
 .register .register-form{
   padding: 10%;
+  padding-top: 0px;
+  padding-bottom: 30px;
   margin-top: 0%;
 }
 .btnRegister{

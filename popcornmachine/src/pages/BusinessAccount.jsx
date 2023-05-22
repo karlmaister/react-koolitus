@@ -14,7 +14,7 @@ import Slider from '@mui/material/Slider';
 import Footer from './components/Footer';
 
 
-const Premium = () => {
+const BusinessAccount = () => {
 
 
   const marks = [
@@ -547,4 +547,4 @@ const Premium = () => {
   );
 };
 
-export default Premium;
+export default BusinessAccount;
