@@ -169,6 +169,14 @@ const PrivateAccount = () => {
       case '2D':
       case 'logoDesign':
         return 50;
+      case 15:
+        return 75;
+      case 30:
+        return 105;
+      case 45:
+        return 125;
+      case 60:
+        return 155;
       default:
         return 0;
     }
@@ -192,6 +200,11 @@ const PrivateAccount = () => {
       totalPrice += getPrice('voiceOver');
     }
 
+    if (selectedOptions.videoLength) {
+      console.log(selectedOptions.videoLength)
+      totalPrice += getPrice(selectedOptions.videoLength);
+    }
+
 
     if (selectedOptions.soundDesign) {
       totalPrice += getPrice('soundDesign');
@@ -200,6 +213,7 @@ const PrivateAccount = () => {
     if (selectedOptions.needVideographer) {
       totalPrice += getPrice('needVideographer');
     }
+
 
     return totalPrice;
   };
@@ -222,10 +236,15 @@ const PrivateAccount = () => {
       <div className='register'>
 
         <div className='register-left'>
-          <h3>Welcome private partner!</h3>
-          <p>Here you can combine your personalized video service package</p>
+
+          <h2>Welcome VideoArsenal - your partner in digital media!</h2>
+
+          <p>
+            For our private customers - <button onClick={handleScroll}>click here</button> <br />
+            Business customers
+          </p>
           <iframe
-            
+
             src="https://player.vimeo.com/video/121097470?h=e3506ba6f1"
             title="How It Works Video"
             frameBorder="0"
@@ -250,14 +269,14 @@ const PrivateAccount = () => {
                     Were will you be useing this video?'
                     class="form-control" id="textAreaExample" rows="5" name="idea" onChange={handleChange}></textarea>
                 </div>
-                <div>
+                <div className='format_select'>
                   <ToggleButtonGroup
                     color="primary"
                     value={selectedOptions.format}
                     exclusive
                     onChange={handleFormatChange}
                     name="format"
-                    sx={{borderRadius: '30px', gap:'10px'}}
+                    sx={{ borderRadius: '30px', gap: '10px' }}
 
                   >
                     <ToggleButton value="" disabled>Select Format</ToggleButton>
@@ -271,6 +290,25 @@ const PrivateAccount = () => {
                     <ToggleButton value="WEBM or HTML5">WEBM or HTML5</ToggleButton>
                     <ToggleButton value="MPEG-2">MPEG-2</ToggleButton>
                   </ToggleButtonGroup>
+                </div>
+                <div className='format_select_mobile'>
+                  <select
+                    color="primary"
+                    value={selectedOptions.format}
+                    exclusive
+                    onChange={handleChange}
+                    name="format"
+                  >
+                    <option value="">Select Language</option>
+                    <option value="MP4">MP4</option>
+                    <option value="MOV">MOV</option>
+                    <option value="WMV">WMV</option>
+                    <option value="AVCHD">AVCHD</option>
+                    <option value="FLV, F4V, SWF">FLV, F4V, SWF</option>
+                    <option value="WEBM or HTML5">WEBM or HTML5</option>
+                    <option value="WEBM or HTML5">Other - please specify in idea box</option>
+                  </select>
+
                 </div>
                 <ToggleButtonGroup
                   color="primary"
@@ -287,7 +325,7 @@ const PrivateAccount = () => {
 
                 <br />
 
-                <Box sx={{ width: 300}}>
+                <Box sx={{ width: 300 }}>
                   Video length
                   <Slider
                     aria-label="Always visible"
@@ -453,36 +491,6 @@ const PrivateAccount = () => {
                   </div>}
                 </Form.Group>
                 <br />
-
-                <label>
-                  Name / Company name:
-                  <input
-                    type="text"
-                    name="footageLink"
-                    value={selectedOptions.footageLink}
-                    onChange={handleChange}
-                  />
-                </label>
-                <label>
-                  E-mail:
-                  <input
-                    type="text"
-                    name="footageLink"
-                    value={selectedOptions.footageLink}
-                    onChange={handleChange}
-                  />
-                </label>
-                <label>
-                  Phone:
-                  <input
-                    type="text"
-                    name="footageLink"
-                    value={selectedOptions.footageLink}
-                    onChange={handleChange}
-                  />
-                </label>
-
-
               </form>
 
             </div>
@@ -495,8 +503,8 @@ const PrivateAccount = () => {
                   <li> Format {selectedOptions.format} - {getPrice(selectedOptions.format)} EUR</li>
                 )}{selectedOptions.animation && (
                   <>
-                  <li> Animation {selectedOptions.animation} - {getPrice(selectedOptions.animation)} EUR</li>
-                  <li> Video length {selectedOptions.videoLength} sek</li>
+                    <li> Animation {selectedOptions.animation} - {getPrice(selectedOptions.animation)} EUR</li>
+                    <li> Video length {selectedOptions.videoLength} sek - {getPrice(selectedOptions.videoLength)} EUR</li>
                   </>
                 )}
                 {selectedOptions.logoDesign && <li>Logo Design {getPrice('logoDesign')} EUR</li>}
@@ -510,12 +518,12 @@ const PrivateAccount = () => {
                     <li>Voice Over {getPrice('voiceOver')} EUR</li>
                     <li>Voice: {selectedOptions.voice}</li>
                     <li>Voice Style: {selectedOptions.voiceStyle}</li>
-                    </>
+                  </>
                 }
                 {selectedOptions.language && <li>Language: {selectedOptions.language}</li>}
               </ul>
               <p>Price: {getTotalPrice()} EUR</p>
-              
+
               <div>
 
                 <button className="button-explore" onClick={handlePopupOpen}>Confirm and Pay</button>
@@ -525,6 +533,7 @@ const PrivateAccount = () => {
                     onClose={handlePopupClose}
                     getPrice={getPrice}
                     getTotalPrice={getTotalPrice}
+                    cart_sum={getTotalPrice}
                   />
                 )}
               </div>
@@ -534,7 +543,7 @@ const PrivateAccount = () => {
         </div>
 
       </div>
-      
+
       <Footer />
     </div>
 

@@ -13,7 +13,7 @@ function Payment(props) {
           "order_reference": Math.random() * 9999999,
           "nonce": "a9b7f7e7943" + Math.random() * 9999999,
           "timestamp": new Date(),
-          "customer_url": "https://webshop-karl.web.app"
+          "customer_url": "https://webshop-karl.web.app/payment"
       };
     
         const paymentHeaders = {

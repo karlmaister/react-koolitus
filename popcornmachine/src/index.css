@@ -241,6 +241,10 @@ iframe {
   height:500px;
 }
 
+.format_select_mobile {
+  display: none;
+}
+
 @media (max-width: 767px) {
   .cart-container {
     position: static;
@@ -253,11 +257,26 @@ iframe {
     margin-left: 15%;
   }
 
+  .format_select {
+    display: none;
+  }
+
   iframe {
     width:100%;
   }
+
+  .format_select_mobile {
+    display: block;
+  }
+
+
+.css-1gjgmky-MuiToggleButtonGroup-root .MuiToggleButtonGroup-grouped:not(:first-of-type) {
+    margin-left: 15px;
+    border-left: 1px solid transparent;
+    border-radius: 50% !important;
 }
 
+}
 
 
 .cart-container h2 {
@@ -388,3 +407,4 @@ iframe {
   margin-bottom: -15%;
   color: #495057;
 }
+
