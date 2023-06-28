@@ -111,7 +111,7 @@ export default function Pricing() {
           <Typography variant="h5" align="center" color="text.secondary" component="p">
             Quickly build an effective video for your potential customers with this form. First
             select your package. For Single videos you can use our calculator. For monthly and
-            yearly options leave your contact! If you need help choosing{"."} <br />
+            yearly options leave your contact! <br />
           </Typography>
         </Container>
         {/* End hero unit */}

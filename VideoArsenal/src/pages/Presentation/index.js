@@ -107,34 +107,40 @@ function Presentation() {
         <Counters />
         <br />
         <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+          
+  <div  style={{ padding: '20px', display: 'flex', gap: '10px' }}>
   <MKButton
     href="/private"
     color="info"
     variant="outlined"
     sx={{
       color: ({ palette: { dark } }) => dark.main,
-      fontSize: '130%' // Increase font size by 30%
+      fontSize: '130%' , // Increase font size by 30%
+      padding: '10px 20px', // Add padding to the button
     }}
   >
     Private
   </MKButton>
   <MKButton
-    href="/business"
-    color="error"
-    variant="outlined"
-    sx={{
-      color: ({ palette: { dark } }) => dark.main,
-      fontSize: '130%' // Increase font size by 30%
-    }}
-  >
-    Business
-  </MKButton>
+  href="/business"
+  color="error"
+  variant="outlined"
+  sx={{
+    color: ({ palette: { dark } }) => dark.main,
+    fontSize: '130%', // Increase font size by 30%
+    padding: '10px 20px', // Add padding to the button
+  }}
+>
+  Business
+</MKButton>
+  </div>
+
 </div>
 <br />
 
         <Packages />
         {/* <Information /> */}
-        <Container>
+        {/* <Container>
           <Grid container spacing={3}>
             <Grid item xs={12} lg={4}>
               <FilledInfoCard
@@ -177,7 +183,7 @@ function Presentation() {
               />
             </Grid>
           </Grid>
-        </Container>
+        </Container> */}
       </Card>
       <MKBox pt={6} px={1} mt={6}>
         <DefaultFooter content={footerRoutes} />

@@ -31,7 +31,7 @@ import routes from "routes";
 import footerRoutes from "footer.routes";
 
 // Image
-import bgImage from "assets/images/PRIVATE_ACCOUNT_pexels-george-milton-7015038.jpg";
+import bgImage from "assets/images/PORFOLIO_pexels-guillaume-meurice-2808402.jpg";
 
 import emailjs from "@emailjs/browser";
 
@@ -70,7 +70,13 @@ function ContactUs() {
             borderRadius="lg"
             ml={2}
             mt={2}
-            sx={{ backgroundImage: `url(${bgImage})` }}
+            sx={{
+              backgroundImage: `url(${bgImage})`,
+              backgroundSize: "cover",
+              backgroundPosition: "top",
+              display: "grid",
+              placeItems: "center",
+            }}
           />
         </Grid>
         <Grid

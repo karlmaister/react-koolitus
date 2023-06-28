@@ -6,7 +6,7 @@ import TextField from "@mui/material/TextField";
 import emailjs from "@emailjs/browser";
 import PropTypes from "prop-types";
 
-const MarketingIdeaForm = ({ selectedPackage }) => {
+const MarketingIdeaForm = ({ selectedPackage, onClose }) => {
   const nameRef = useRef();
   const emailRef = useRef();
   const messageRef = useRef();
@@ -20,7 +20,7 @@ const MarketingIdeaForm = ({ selectedPackage }) => {
       package: packageRef.current.value,
     };
 
-    emailjs.send("service_ew78t4p", "template_d2a8yfi", data, "BzlVLHD4O0_feXKUB").then(
+    emailjs.send("service_ew78t4p", "template_0i11c37", data, "BzlVLHD4O0_feXKUB").then(
       (result) => {
         console.log(result.text);
       },
@@ -32,6 +32,7 @@ const MarketingIdeaForm = ({ selectedPackage }) => {
 
   MarketingIdeaForm.propTypes = {
     selectedPackage: PropTypes.string,
+    onClose: PropTypes.func,
   };
 
   return (
@@ -39,7 +40,10 @@ const MarketingIdeaForm = ({ selectedPackage }) => {
       <br />
       <Form onSubmit={sendEmail} className="form-forms">
         <Form.Group controlId="package">
-          <TextField value={selectedPackage}> {selectedPackage}</TextField>
+          <TextField inputRef={packageRef} value={selectedPackage}>
+            {" "}
+            {selectedPackage}
+          </TextField>
         </Form.Group>
 
         <Form.Group controlId="name">
@@ -75,7 +79,14 @@ const MarketingIdeaForm = ({ selectedPackage }) => {
           </TextField>
         </Form.Group>
 
-        <Button variant="outlined" color="error" type="submit">
+        <Button
+          variant="outlined"
+          color="error"
+          onClick={() => {
+            sendEmail();
+            onClose();
+          }}
+        >
           SEND
         </Button>
       </Form>
