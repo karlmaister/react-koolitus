@@ -19,14 +19,16 @@ import AboutUs from './pages/AboutUs';
 import BusinessAccount from './pages/BusinessAccount';
 import PrivateAccount from './pages/PrivateAccount';
 import Portfolio from './pages/Portfolio';
+import TermsAndConditions from './pages/TermsAndConditions';
+import Footer from '../src/pages/components/Footer'
 function App() {
 
   const { loggedIn } = useContext(AuthContext);
 
   return (
     <div className='app-background'>
+ <NavigationBar />
 
-<NavigationBar />
 
 
 <Routes>
@@ -40,6 +42,8 @@ function App() {
   <Route path="business" element={<BusinessAccount />} />
   <Route path="aboutus" element={<AboutUs />} />
   <Route path="portfolio" element={<Portfolio />} />
+  <Route path="homepage" element={<HomePage />} />
+  <Route path="t&c" element={<TermsAndConditions />} />
   
 
 
@@ -54,6 +58,7 @@ function App() {
   <Route path="*" element={<div>404 NOT FOUND </div>} />
 
 </Routes>
+<Footer/>
     </div>
   );
 }

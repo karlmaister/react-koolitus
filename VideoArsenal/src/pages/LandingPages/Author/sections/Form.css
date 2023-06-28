@@ -1,0 +1,232 @@
+.register{
+    padding: 1%;
+  }
+  .register-left{
+    text-align: center;
+    color: #fff;
+    margin-top: 1%;
+  }
+ 
+ 
+  .register-left img{
+    margin-top: 15%;
+    margin-bottom: 5%;
+    width: 25%;
+    -webkit-animation: mover 2s infinite  alternate;
+    animation: mover 1s infinite  alternate;
+  }
+  @-webkit-keyframes mover {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-20px); }
+  }
+  @keyframes mover {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-20px); }
+  }
+  .register-left p{
+    font-weight: lighter;
+    padding: 20px;
+    font-size: 18px;
+  }
+  .register .register-form{
+    padding: 10%;
+    padding-top: 0px;
+    padding-bottom: 0%;
+    margin-top: 0%;
+  }
+  .btnRegister{
+    float: right;
+    margin-top: 10%;
+    border: none;
+    border-radius: 1.5rem;
+    padding: 2%;
+    background: #0062cc;
+    color: #fff;
+    font-weight: 600;
+    width: 50%;
+    cursor: pointer;
+  }
+  .register .nav-tabs{
+    margin-top: 3%;
+    border: none;
+    background: #0062cc;
+    border-radius: 1.5rem;
+    width: 28%;
+    float: right;
+  }
+  .register .nav-tabs .nav-link{
+    padding: 2%;
+    height: 34px;
+    font-weight: 600;
+    color: #fff;
+    border-top-right-radius: 1.5rem;
+    border-bottom-right-radius: 1.5rem;
+  }
+  .register .nav-tabs .nav-link:hover{
+    border: none;
+  }
+  .register .nav-tabs .nav-link.active{
+    width: 100px;
+    color: #0062cc;
+    border: 2px solid #0062cc;
+    border-top-left-radius: 1.5rem;
+    border-bottom-left-radius: 1.5rem;
+  }
+  .register-heading{
+    text-align: center;
+    margin-top: 5%;
+    margin-bottom: 1%;
+    color: #495057;
+  }
+  
+  .register-welcome {
+    margin-top: 50px;
+    color: #ffffff;
+  }
+  
+  .format_select_mobile {
+    display: none;
+  }
+
+  .form-container {
+    display: inline-block;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .form-container h2 {
+    margin-bottom: 20px;
+  }
+  
+  .form-container label {
+    display: block;
+    margin-bottom: 10px;
+  }
+  
+  .form-container input[type="text"],
+  .form-container select {
+    width: 100%;
+    padding: 5px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+  }
+  
+  .form-container textarea {
+    width: 100%;
+    padding: 8px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+  }
+  
+  .form-container button[type="submit"] {
+    padding: 10px 20px;
+    background-color: #7b88ff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 10px;
+  }
+
+ 
+  
+  .css-1gjgmky-MuiToggleButtonGroup-root .MuiToggleButtonGroup-grouped {
+    margin-left: 15px;
+    border-left: 1px solid transparent;
+    border-radius: 30px;
+    margin-left: auto;
+  }
+
+ .MuiSlider-root {
+z-index: 0;
+ }
+
+ .css-kg4y15 {
+  z-index: 0;
+ }
+
+  
+.cart-container h2 {
+    margin-bottom: 10px;
+  }
+  
+  .cart-container ul {
+    list-style-type:circle;
+    padding: 0;
+  }
+  
+  .cart-container ul li {
+    margin-bottom: 5px;
+  }
+  
+  .cart-container p {
+    margin-top: 10px;
+  }
+
+  .cart-container {
+  display: inline-flex;
+  text-align: justify;
+  flex-direction: column;
+  align-items: flex-end;
+  position: sticky;
+  bottom: 30px;
+  left: 10%;
+  border-radius: 15px;
+  padding: 10px 30px;
+  margin-left: 30px;
+  margin-top:60px;
+  margin-bottom:0px;
+  top: 20vh; /* Adjust the scroll threshold as needed */
+}
+
+
+@media (max-width: 767px) {
+  .cart-container {
+    text-align: center;
+    align-items: flex-end;
+    position:static;
+  }
+
+  .format_select {
+    display: none;
+  }
+
+  iframe {
+    width:100%;
+  }
+
+  .format_select_mobile {
+    display: block;
+  }
+
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.section {
+  flex: 1 0 100%;
+  padding: 20px;
+  color: white;
+  box-sizing: border-box;
+}
+
+.section:nth-child(odd) {
+  background-color: #011224;
+  opacity: 90%;
+}
+
+.section:nth-child(even) {
+  background-color: red;
+  opacity: 70%;
+}
+
+.section h2 {
+  margin-top: 0;
+}
+
+.section p {
+  margin-bottom: 10px;
+}

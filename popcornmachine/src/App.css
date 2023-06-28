@@ -26,8 +26,7 @@ th {
 
 
 .bg-light {
-  background-color: rgb(255, 255, 255) !important;
-
+  background-color: transparent !important;
 }
 
 
@@ -76,62 +75,6 @@ th {
       border-radius: 100%;
   }
   
-  /* span {
-      z-index: 999;
-      height: 3px;
-      margin:1px;
-      width: 30px;
-      background: #fff;
-      transition: 0.4s ease;
-  }
-  
-  span:first-child {
-      display: block;
-      position: absolute;
-      transform: rotate(45deg);
-      left: 25%;
-      bottom: 35%;
-  }
-  
-  span:nth-child(2) {
-      display: block;
-      position: absolute;
-      transform: rotate(-45deg);
-      left: 45%;
-      bottom: 35%;
-  }
-  
-  span:nth-child(3) {
-      display: block;
-      position: absolute;
-      transform: rotate(45deg);
-      left: 25%;
-      bottom: 54%;
-  }
-  
-  span:nth-child(4) {
-      display: block;
-      position: absolute;
-      transform: rotate(-45deg);
-      left: 45%;
-      bottom: 54%;
-  }
-  
-  .round:hover span:nth-child(1) {
-      transform: rotate(-135deg);
-  }
-  
-  .round:hover span:nth-child(2) {
-      transform: rotate(135deg);
-  }
-  
-  .round:hover span:nth-child(3) {
-      transform: rotate(225deg);
-  }
-  
-  .round:hover span:nth-child(4) {
-      transform: rotate(-225deg);
-  } */
 
   .account-selection {
     display: flex;
@@ -178,6 +121,8 @@ th {
     cursor: pointer;
     opacity: 70%;
   }
+
+
 
   @media (max-width: 700px) {
     .form-login {
@@ -239,11 +184,7 @@ th {
       cursor: pointer;
       margin-top: 10px;
     }
-    .register{
-      background: -webkit-linear-gradient(left, #3931af, #00c6ff);
-      width: 100%;
-      padding: 1%;
-    }
+    
     .register-left{
       text-align: center;
       color: #fff;

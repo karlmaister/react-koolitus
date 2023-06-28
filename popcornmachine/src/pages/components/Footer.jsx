@@ -1,36 +1,34 @@
-import React from 'react'
-import '../../css/footer.css';
+import React from 'react';
+import {
+  MDBFooter,
+  MDBContainer,
+  MDBCol,
+  MDBRow,
+  MDBBtn
+} from 'mdb-react-ui-kit';
+import { Link } from 'react-router-dom';
+import TermsAndConditions from '../TermsAndConditions';
 
-function Footer() {
+export default function App() {
   return (
-    <div>
-            <footer>
-  <div class="footer-container">
-    <div class="footer-section">
-      <h3>About Us</h3>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean aliquam neque id fringilla tincidunt.</p>
-    </div>
-    <div class="footer-section">
-      <h3>Contact Us</h3>
-      <p>Email: info@example.com</p>
-      <p>Phone: +1 123-456-7890</p>
-      <p>Address: 123 Main Street, City, Country</p>
-    </div>
-    <div class="footer-section">
-      <h3>Follow Us</h3>
-      <ul class="social-media-icons">
-        <li><a href="https://facebook.com"><i class="fab fa-facebook"></i></a></li>
-        <li><a href="https://facebook.com"><i class="fab fa-twitter"></i></a></li>
-        <li><a href="https://facebook.com"><i class="fab fa-instagram"></i></a></li>
-      </ul>
-    </div>
-  </div>
-  <div class="footer-bottom">
-    <p>&copy; 2023 VideoArsenal. All rights reserved.</p>
-  </div>
-</footer>
-    </div>
-  )
-}
+    <MDBFooter className='text-center text-white' style={{backgroundColor: 'rgb(1, 18, 36)' }}>
+      <MDBContainer className='p-4 pb-0'>
+        <section className=''>
+          <p className='d-flex justify-content-center align-items-center'>
+            {/* <span className='me-3'>Open</span>
+            <MDBBtn type='button' outline color="light" rounded>
+              Sign up!
+            </MDBBtn> */}
+            <span><Link to="/t&c">Terms and conditions </Link></span>
+          </p>
+          
+        </section>
+        
+      </MDBContainer>
 
-export default Footer
+      <div className='text-center p-3' style={{ backgroundColor: 'rgb(1, 18, 36)' }}>
+        © 2023 Copyright: videoarsenal.com
+      </div>
+    </MDBFooter>
+  );
+}

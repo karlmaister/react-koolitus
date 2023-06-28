@@ -43,3 +43,7 @@
     cursor: pointer;
   }
   
+  .order-summary-form {
+    display: flex;
+    justify-content: center;
+  }

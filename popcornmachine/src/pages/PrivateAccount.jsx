@@ -12,6 +12,25 @@ import Checkbox from '@mui/material/Checkbox';
 import Box from '@mui/material/Box';
 import Slider from '@mui/material/Slider';
 import Footer from './components/Footer';
+import { useNavigate } from 'react-router-dom';
+import {
+  MDBContainer,
+  MDBRow,
+  MDBCard,
+  MDBCardHeader,
+  MDBCol,
+  MDBCardBody,
+  MDBTabs,
+  MDBTabsItem,
+  MDBTabsLink,
+  MDBTabsPane,
+  MDBTabsContent,
+  MDBIcon,
+  MDBCheckbox,
+  MDBInput,
+  MDBBtn,
+  MDBTextArea,
+} from 'mdb-react-ui-kit';
 
 
 const PrivateAccount = () => {
@@ -57,6 +76,12 @@ const PrivateAccount = () => {
       ;
   }
 
+  const navigate = useNavigate();
+
+  const navigateToBusiness = () => {
+    navigate("/business");
+  }
+
   const [showPopup, setShowPopup] = useState(false);
 
   const handlePopupOpen = () => {
@@ -78,7 +103,7 @@ const PrivateAccount = () => {
     animation: '2D',
     voice: 'man',
     voiceStyle: '',
-    videoLength: '60'
+    videoLength: 60
   });
 
   const handleChange = (event) => {
@@ -177,6 +202,12 @@ const PrivateAccount = () => {
         return 125;
       case 60:
         return 155;
+        case 75:
+        return 185;
+        case 90:
+        return 235;
+        case 100:
+        return 300;
       default:
         return 0;
     }
@@ -234,31 +265,40 @@ const PrivateAccount = () => {
     <div>
 
       <div className='register'>
-
+    
         <div className='register-left'>
 
-          <h2>Welcome VideoArsenal - your partner in digital media!</h2>
-
-          <p>
-            For our private customers - <button onClick={handleScroll}>click here</button> <br />
-            Business customers
-          </p>
+         <div className='register-welcome'>
+         <h2>VideoArsenal - your partner in digital media!</h2>
+          <p>Best quality video production money can buy</p>
+          
+            <div className='landingButtonForm'>
+            <button className='landingButton' onClick={handleScroll}>Private customer</button> <br />
+            <button className='landingButton' onClick={navigateToBusiness} >Business customer</button> <br />
+            </div>
+         </div>
+          
           <iframe
-
-            src="https://player.vimeo.com/video/121097470?h=e3506ba6f1"
+            src="https://player.vimeo.com/video/121097470?h=e3506ba6f1?autoplay=1"
             title="How It Works Video"
-            frameBorder="0"
             allow="autoplay; encrypted-media"
-            allowFullScreen
+            webkitallowfullscreen=""
+            mozallowfullscreen=""
+            allowfullscreen=""
+            data-ready="true"
           ></iframe>
         </div>
 
-        <div className='register-right'>
+        
 
+   
+
+        <div className='register-right'>
+          
           <div className='register-form'>
 
             <div className='form-container'>
-              <h2 className='register-heading'>Form</h2>
+              <h2 className='register-heading'>Combine your video here!</h2>
               <form onSubmit={handleFormSubmit}>
                 <div class="form-outline">
                   <label class="form-label" for="textAreaExample">Tell us your vision in a simple 5 bulletpoint list!</label>
@@ -276,7 +316,7 @@ const PrivateAccount = () => {
                     exclusive
                     onChange={handleFormatChange}
                     name="format"
-                    sx={{ borderRadius: '30px', gap: '10px' }}
+                    
 
                   >
                     <ToggleButton value="" disabled>Select Format</ToggleButton>
@@ -325,8 +365,15 @@ const PrivateAccount = () => {
 
                 <br />
 
-                <Box sx={{ width: 300 }}>
+                <Box sx={{ width: 300 }}> 
                   Video length
+                  {/* {selectedOptions.videoLength > 99 && <><label>Custom time (sec)</label>
+                  <input
+                    type="number"
+                    name="videoLength"
+                    value={selectedOptions.videoLength}
+                    onChange={handleChange}
+                  /></>} */}
                   <Slider
                     aria-label="Always visible"
                     defaultValue={60}
@@ -336,26 +383,24 @@ const PrivateAccount = () => {
                     valueLabelDisplay="on"
                     name='videoLength'
                     onChange={handleVideoLength}
+                    
                   />
+                  
                 </Box>
-                <label>
-                  Add Own Footage/Link:
-                  <input
-                    type="text"
+                
+                    <MDBInput className='mb-4' id='last2' placeholder='Add your footage/material link'
                     name="footageLink"
                     value={selectedOptions.footageLink}
-                    onChange={handleChange}
-                  />
-                </label>
-                <label>
-                  Add Own Font:
-                  <input
+                    onChange={handleChange}/>
+                
+                  <MDBInput className='mb-4'
+                  placeholder='Add your font link'
                     type="text"
                     name="fontLink"
                     value={selectedOptions.fontLink}
                     onChange={handleChange}
                   />
-                </label>
+                
                 <ToggleButtonGroup
                   color="primary"
                   value={selectedOptions.logoDesign}
@@ -363,18 +408,18 @@ const PrivateAccount = () => {
                   onChange={handleLogoDesign}
                   name="logoDesign"
                   aria-label="logoDesign"
+                  defaultValue={true}
                 >
                   <ToggleButton value="" disabled>logoDesign</ToggleButton>
                   <ToggleButton value={true}>YES</ToggleButton>
                   <ToggleButton value={false}>NO</ToggleButton>
-
-
-                  <IconButton color="primary" aria-label="upload picture" component="label">
+                  </ToggleButtonGroup>
+                {selectedOptions.logoDesign === false &&  <IconButton color="primary" aria-label="upload picture" component="label" sx={{ width: 300 }}>
                     <input hidden accept="image/*" type="file" />
                     UPLOAD YOUR LOGO
                     <PhotoCamera />
-                  </IconButton>
-                </ToggleButtonGroup>
+                  </IconButton>}
+                
 
 
 
@@ -544,7 +589,7 @@ const PrivateAccount = () => {
 
       </div>
 
-      <Footer />
+
     </div>
 
   );

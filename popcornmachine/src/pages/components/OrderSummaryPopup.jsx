@@ -1,21 +1,21 @@
 import React, { useRef } from 'react';
 import '../../css/OrderSummaryPopup.css';
-import Payment from './cart/Payment';
 import emailjs from '@emailjs/browser';
-import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 
 
-const OrderSummaryPopup = ({ selectedOptions, onClose, getPrice, getTotalPrice, cart_sum }) => {
+const OrderSummaryPopup = ({ selectedOptions, onClose, getPrice, getTotalPrice}) => {
 
   const nameRef = useRef();
   const emailRef = useRef();
+  const messageRef = useRef();
 
   const sendEmail = (e) => {
 
     const data = {
       "client_name": nameRef.current.value,
       "client_email": emailRef.current.value,
+      "message": messageRef.current.value,
       "cart_sum":  getTotalPrice(),
     }
 
@@ -62,6 +62,7 @@ const OrderSummaryPopup = ({ selectedOptions, onClose, getPrice, getTotalPrice, 
 <div className='order-summary-form'>
         <TextField inputRef={nameRef} label="Name" variant="outlined" /> <br />
         <TextField inputRef={emailRef} label="Email" variant="outlined" /> <br />
+        <TextField inputRef={messageRef} label="Comments" variant="outlined" /> <br />
         </div>
         <button variant="contained" onClick={sendEmail}>Confirm order</button>
         <button onClick={onClose}>Back to change</button>

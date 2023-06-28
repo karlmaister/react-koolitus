@@ -1,0 +1,37 @@
+{
+    "nav": {
+        "admin": "Selfservice",
+        "contact": "Contacts",
+        "kkk": "FAQ",
+        "cart": "Cart",
+        "forms": "Send a form",
+        "packages": "Packages",
+        "login":"Login",
+        "logout":"Logout"
+    },
+    "maintain-categories": "Maintain Categories",
+    "maintain-shops": "Maintain Shops",
+    "add-product": "Add Product",
+    "maintain-products": "Maintain Products",
+    "sort": {
+        "sorteeriAZ": "Sorti A-Z",
+        "sorteeriZA": "Sort Z-A",
+        "sorteeriKasvav": "Sort Asc",
+        "sorteeriKahanev": "Sort Desc"
+    },
+    "total": "Total",
+    "clearcart": "Clear Cart",
+    "count": "Products in cart",
+    "add_to_cart": "Add",
+    "filter_motorcycle": "Filter Category Motorcycle",
+    "add_product": "Add Product",
+    "name": "Name",
+    "price": "Price",
+    "image": "Image",
+    "category": "Category",
+    "description": "description",
+    "active": "Active",
+    "id_error": "This ID is in use",
+    "product_added": "Product added",
+    "empty":"Empty"
+}

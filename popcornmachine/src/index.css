@@ -2,6 +2,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Anuphan:wght@200&display=swap');
   
 
+
+
 .packs {
   display: flex;
   gap: 10px;
@@ -25,7 +27,6 @@
 
 
 .overlay {
-  background-image: url(https://wallpaperaccess.com/full/1943463.jpg);
   background-size: cover;
   position: absolute;
   top: 0;
@@ -71,13 +72,6 @@
   background-color: rgb(255, 255, 255);
 }
 
-.business-package {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 50px;
-  background-color: rgb(150, 175, 150);
-}
 
 .left {
   flex: 1;
@@ -94,47 +88,6 @@
   width: 100%;
   max-width: 560px;
   height: 315px;
-}
-
-.carousel-section {
-  text-align: center;
-  padding: 50px;
-}
-
-.carousel {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.carousel img {
-  width: 350px;
-  height: 250px;
-  margin: 0 10px;
-  opacity: 30%;
-}
-
-.carousel img:hover {
-  opacity: 50%;
-  cursor: pointer;
-}
-
-.scroll-button {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  bottom: 20px;
-  padding: 10px 20px;
-  background-color: transparent;
-  color: white;
-  border: none;
-  outline: none;
-  cursor: pointer;
-  font-size: 16px;
-}
-
-.scroll-button:hover {
-  color: #007bff;
 }
 
 
@@ -222,17 +175,19 @@
 
 .cart-container {
   display: inline-flex;
+  text-align: justify;
   flex-direction: column;
   align-items: flex-end;
   position: sticky;
   bottom: 30px;
   left: 10%;
   border: solid 2px lightblue;
-  border-radius: 5px;
+  border-radius: 15px;
   padding: 10px 30px;
   margin-left: 30px;
   margin-top:60px;
   margin-bottom:60px;
+  background-color: rgb(25, 118, 210, 0.08);
   top: 20vh; /* Adjust the scroll threshold as needed */
 }
 
@@ -269,22 +224,21 @@ iframe {
     display: block;
   }
 
-
-.css-1gjgmky-MuiToggleButtonGroup-root .MuiToggleButtonGroup-grouped:not(:first-of-type) {
-    margin-left: 15px;
-    border-left: 1px solid transparent;
-    border-radius: 50% !important;
 }
 
+.css-1gjgmky-MuiToggleButtonGroup-root .MuiToggleButtonGroup-grouped {
+  margin-left: 15px;
+  border-left: 1px solid transparent;
+  border-radius: 30px;
+  margin-left: auto;
 }
-
 
 .cart-container h2 {
   margin-bottom: 10px;
 }
 
 .cart-container ul {
-  list-style-type: none;
+  list-style-type:circle;
   padding: 0;
 }
 
@@ -312,7 +266,7 @@ iframe {
 
 
 .register{
-  background: -webkit-linear-gradient(left, #2A253D, #00c6ff);
+  background: url("https://images.pexels.com/photos/176851/pexels-photo-176851.jpeg?cs=srgb&dl=pexels-instawalli-176851.jpg&fm=jpg");
   padding: 1%;
 }
 .register-left{
@@ -325,7 +279,7 @@ iframe {
   border-radius: 1.5rem;
   padding: 2%;
   width: 60%;
-  background: #f8f9fa;
+  background: #011224;
   font-weight: bold;
   color: #383d41;
   margin-top: 10%;
@@ -354,13 +308,13 @@ iframe {
 }
 .register-left p{
   font-weight: lighter;
-  padding: 10%;
-  margin-top: -9%;
+  padding: 20px;
+  font-size: 18px;
 }
 .register .register-form{
   padding: 10%;
   padding-top: 0px;
-  padding-bottom: 30px;
+  padding-bottom: 0%;
   margin-top: 0%;
 }
 .btnRegister{
@@ -403,8 +357,42 @@ iframe {
 }
 .register-heading{
   text-align: center;
-  margin-top: 8%;
-  margin-bottom: -15%;
+  margin-top: 5%;
+  margin-bottom: 1%;
   color: #495057;
+}
+
+.register-welcome {
+  margin-top: 50px;
+  color: #ffffff;
+}
+
+.landingButton {
+  display: inline;
+  margin-top: 5%;
+  border: 1px solid;
+  border-radius: 1.5rem;
+  padding: 1%;
+  background: transparent;
+  color: #fff;
+  font-weight: 600;
+  width: 11%;
+  height: 10%;
+  cursor: pointer;
+  margin-left: 10px;
+  
+}
+
+.landingButton:hover {
+  display: inline;
+  background: rgba(0, 0, 102, 0.295);
+  cursor: pointer;
+  
+}
+
+
+.landingButtonForm {
+  display: flex;
+  justify-content: center;
 }
 

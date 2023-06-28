@@ -1,54 +1,52 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { Form } from 'react-bootstrap';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
-import IconButton from '@mui/material/IconButton';
-import PhotoCamera from '@mui/icons-material/PhotoCamera';
+import emailjs from '@emailjs/browser';
 
-const MarketingIdeaForm = () => {
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [idea, setIdea] = useState('');
-  const [logo, setLogo] = useState(null);
+const MarketingIdeaForm = (onClose) => {
+  const nameRef = useRef();
+  const emailRef = useRef();
+  const messageRef = useRef();
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Vormi andmete töötlemine ja edasisaatmine
-    console.log('Nimi:', name);
-    console.log('E-post:', email);
-    console.log('Idee:', idea);
-    console.log('Logo:', logo);
-    // Võid siin lisada täiendavaid toiminguid, näiteks andmete saatmine serverisse
+  const sendEmail = (e) => {
+
+    const data = {
+      "client_name": nameRef.current.value,
+      "client_email": emailRef.current.value,
+      "message": messageRef.current.value,
+    }
+    on
+
+    emailjs.send('service_ew78t4p', 'template_d2a8yfi', data, 'BzlVLHD4O0_feXKUB')
+      .then((result) => {
+        console.log(result.text);
+      }, (error) => {
+        console.log(error.text);
+      });
   };
 
-  const handleLogoChange = (e) => {
-    const file = e.target.files[0];
-    setLogo(file);
-  };
+
 
   return (
     <div>
       
-      <Form onSubmit={handleSubmit} className="form-forms">
+      <Form onSubmit={sendEmail} className="form-forms">
         <Form.Group controlId="name">
-          <TextField id="outlined-basic" label="Sisestage oma nimi"variant="outlined" >
+          <TextField inputRef={nameRef} id="outlined-basic" label="Enter name"variant="outlined" >
           <Form.Control
             type="text"
             placeholder="Sisestage oma nimi"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
             required
           />
           </TextField>
         </Form.Group>
 
         <Form.Group controlId="email">
-          <TextField id="outlined-basic" label="Sisestage oma e-mail"variant="outlined" >
+          <TextField inputRef={emailRef} id="outlined-basic" label="Enter e-mail"variant="outlined" >
           <Form.Control
             type="email"
             placeholder="Sisestage oma e-posti aadress"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
             required
           />
           </TextField>
@@ -56,28 +54,19 @@ const MarketingIdeaForm = () => {
 
         <Form.Group controlId="idea">
 
-          <TextField id="outlined-basic" label="Kirjeldage oma ideed" variant="outlined" >
+          <TextField inputRef={messageRef} id="outlined-basic" label="Ideas and preferred consultation time" variant="outlined" >
           <Form.Control
             as="textarea"
             rows={3}
-            placeholder="Kirjeldage oma ideed"
-            value={idea}
-            onChange={(e) => setIdea(e.target.value)}
+            placeholder="Ideas and preferred consultation time"
             required
           />
           </TextField>
         </Form.Group>
 
-        <Form.Group controlId="logo">
-        <IconButton color="primary" aria-label="upload picture" component="label">
-  <input hidden accept="image/*" type="file" />
-  Upload
-  <PhotoCamera />
-</IconButton>
-        </Form.Group>
 
-        <Button variant="primary" type="submit">
-          Esita
+        <Button variant="outlined" type="submit">
+          SEND
         </Button>
       </Form>
     </div>

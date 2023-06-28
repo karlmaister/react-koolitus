@@ -1,8 +1,10 @@
 import React from 'react'
+import Services from './components/Services';
 
 function AboutUs() {
   return (
     <div>
+      <div><Services/></div>
        <section className="how-it-works-section">
 
 <div className="left">

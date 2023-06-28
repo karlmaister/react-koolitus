@@ -12,7 +12,28 @@ import Checkbox from '@mui/material/Checkbox';
 import Box from '@mui/material/Box';
 import Slider from '@mui/material/Slider';
 import Footer from './components/Footer';
-
+import { useNavigate } from 'react-router-dom';
+import BackgroundVideo from './components/BackgroundVideo'
+import NavigationBar from './components/NavigationBar';
+import ReactPlayer from "react-player"
+import {
+  MDBContainer,
+  MDBRow,
+  MDBCard,
+  MDBCardHeader,
+  MDBCol,
+  MDBCardBody,
+  MDBTabs,
+  MDBTabsItem,
+  MDBTabsLink,
+  MDBTabsPane,
+  MDBTabsContent,
+  MDBIcon,
+  MDBCheckbox,
+  MDBInput,
+  MDBBtn,
+  MDBTextArea,
+} from 'mdb-react-ui-kit';
 
 const Premium = () => {
 
@@ -57,6 +78,12 @@ const Premium = () => {
       ;
   }
 
+  const navigate = useNavigate();
+
+  const navigateToBusiness = () => {
+    navigate("/business");
+  }
+
   const [showPopup, setShowPopup] = useState(false);
 
   const handlePopupOpen = () => {
@@ -78,7 +105,7 @@ const Premium = () => {
     animation: '2D',
     voice: 'man',
     voiceStyle: '',
-    videoLength: '60'
+    videoLength: 60
   });
 
   const handleChange = (event) => {
@@ -169,6 +196,20 @@ const Premium = () => {
       case '2D':
       case 'logoDesign':
         return 50;
+      case 15:
+        return 75;
+      case 30:
+        return 105;
+      case 45:
+        return 125;
+      case 60:
+        return 155;
+      case 75:
+        return 185;
+      case 90:
+        return 235;
+      case 100:
+        return 300;
       default:
         return 0;
     }
@@ -192,6 +233,11 @@ const Premium = () => {
       totalPrice += getPrice('voiceOver');
     }
 
+    if (selectedOptions.videoLength) {
+      console.log(selectedOptions.videoLength)
+      totalPrice += getPrice(selectedOptions.videoLength);
+    }
+
 
     if (selectedOptions.soundDesign) {
       totalPrice += getPrice('soundDesign');
@@ -200,6 +246,7 @@ const Premium = () => {
     if (selectedOptions.needVideographer) {
       totalPrice += getPrice('needVideographer');
     }
+
 
     return totalPrice;
   };
@@ -220,75 +267,20 @@ const Premium = () => {
     <div>
 
       <div className='register'>
-
         <div className='register-left'>
-          <h3>Welcome private partner!</h3>
-          <p>Here you can combine your personalized video service package</p>
-          <iframe
-            width="560"
-            height="315"
-            src="https://player.vimeo.com/video/121097470?h=e3506ba6f1"
-            title="How It Works Video"
-            frameBorder="0"
-            allow="autoplay; encrypted-media"
-            allowFullScreen
-          ></iframe>
-          <button className="scroll-button" onClick={handleScroll}>
-            <div className="center-con">
-              <div className="round">
-              </div>
 
-            </div>
-          </button>
+          <div className='register-welcome'>
+
+          </div>
+
         </div>
 
         <div className='register-right'>
 
           <div className='register-form'>
-            <div className='cart-container'>
-              <h2 className='register-heading'>Total</h2>
-              <p>Selected Options:</p>
-              <ul>
-                {selectedOptions.format && (
-                  <li> Format {selectedOptions.format} - {getPrice(selectedOptions.format)} EUR</li>
-                )}{selectedOptions.animation && (
-                  <>
-                  <li> Animation {selectedOptions.animation} - {getPrice(selectedOptions.animation)} EUR</li>
-                  <li> Video length {selectedOptions.videoLength} sek</li>
-                  </>
-                )}
-                {selectedOptions.logoDesign && <li>Logo Design {getPrice('logoDesign')} EUR</li>}
-                {selectedOptions.footageLink && (
-                  <li>Footage Link: {selectedOptions.footageLink}</li>
-                )}
-                {selectedOptions.needVideographer && <li>Need a Videographer {getPrice('needVideographer')} EUR</li>}
-                {selectedOptions.soundDesign && <li>Sound Design {getPrice('soundDesign')} EUR</li>}
-                {selectedOptions.voiceOver &&
-                  <>
-                    <li>Voice Over {getPrice('voiceOver')} EUR</li>
-                    <li>Voice: {selectedOptions.voice}</li>
-                    <li>Voice Style: {selectedOptions.voiceStyle}</li>
-                    </>
-                }
-                {selectedOptions.language && <li>Language: {selectedOptions.language}</li>}
-              </ul>
-              <p>Price: {getTotalPrice()} EUR</p>
-              
-              <div>
 
-                <button className="button-explore" onClick={handlePopupOpen}>Confirm and Pay</button>
-                {showPopup && (
-                  <OrderSummaryPopup
-                    selectedOptions={selectedOptions}
-                    onClose={handlePopupClose}
-                    getPrice={getPrice}
-                    getTotalPrice={getTotalPrice}
-                  />
-                )}
-              </div>
-            </div>
             <div className='form-container'>
-              <h2 className='register-heading'>Form</h2>
+              <h2 className='register-heading'>Combine your video here!</h2>
               <form onSubmit={handleFormSubmit}>
                 <div class="form-outline">
                   <label class="form-label" for="textAreaExample">Tell us your vision in a simple 5 bulletpoint list!</label>
@@ -299,13 +291,14 @@ const Premium = () => {
                     Were will you be useing this video?'
                     class="form-control" id="textAreaExample" rows="5" name="idea" onChange={handleChange}></textarea>
                 </div>
-                <div>
+                <div className='format_select'>
                   <ToggleButtonGroup
                     color="primary"
                     value={selectedOptions.format}
                     exclusive
                     onChange={handleFormatChange}
                     name="format"
+                    sx={{ borderRadius: '30px', gap: '10px' }}
 
                   >
                     <ToggleButton value="" disabled>Select Format</ToggleButton>
@@ -319,6 +312,25 @@ const Premium = () => {
                     <ToggleButton value="WEBM or HTML5">WEBM or HTML5</ToggleButton>
                     <ToggleButton value="MPEG-2">MPEG-2</ToggleButton>
                   </ToggleButtonGroup>
+                </div>
+                <div className='format_select_mobile'>
+                  <select
+                    color="primary"
+                    value={selectedOptions.format}
+                    exclusive
+                    onChange={handleChange}
+                    name="format"
+                  >
+                    <option value="">Select Language</option>
+                    <option value="MP4">MP4</option>
+                    <option value="MOV">MOV</option>
+                    <option value="WMV">WMV</option>
+                    <option value="AVCHD">AVCHD</option>
+                    <option value="FLV, F4V, SWF">FLV, F4V, SWF</option>
+                    <option value="WEBM or HTML5">WEBM or HTML5</option>
+                    <option value="WEBM or HTML5">Other - please specify in idea box</option>
+                  </select>
+
                 </div>
                 <ToggleButtonGroup
                   color="primary"
@@ -335,8 +347,15 @@ const Premium = () => {
 
                 <br />
 
-                <Box sx={{ width: 380 }}>
+                <Box sx={{ width: 300 }}>
                   Video length
+                  {/* {selectedOptions.videoLength > 99 && <><label>Custom time (sec)</label>
+                  <input
+                    type="number"
+                    name="videoLength"
+                    value={selectedOptions.videoLength}
+                    onChange={handleChange}
+                  /></>} */}
                   <Slider
                     aria-label="Always visible"
                     defaultValue={60}
@@ -346,45 +365,46 @@ const Premium = () => {
                     valueLabelDisplay="on"
                     name='videoLength'
                     onChange={handleVideoLength}
+
                   />
-                </Box>
-                <label>
-                  Add Own Footage/Link:
-                  <input
-                    type="text"
-                    name="footageLink"
-                    value={selectedOptions.footageLink}
-                    onChange={handleChange}
-                  />
-                </label>
-                <label>
-                  Add Own Font:
-                  <input
-                    type="text"
-                    name="fontLink"
-                    value={selectedOptions.fontLink}
-                    onChange={handleChange}
-                  />
-                </label>
-                <ToggleButtonGroup
-                  color="primary"
-                  value={selectedOptions.logoDesign}
-                  exclusive
-                  onChange={handleLogoDesign}
-                  name="logoDesign"
-                  aria-label="logoDesign"
-                >
-                  <ToggleButton value="" disabled>logoDesign</ToggleButton>
-                  <ToggleButton value={true}>YES</ToggleButton>
-                  <ToggleButton value={false}>NO</ToggleButton>
+
+</Box>
+                
+                <MDBInput className='mb-4' id='last2' placeholder='Add your footage/material link'
+                name="footageLink"
+                value={selectedOptions.footageLink}
+                onChange={handleChange}/>
+            
+              <MDBInput className='mb-4'
+              placeholder='Add your font link'
+                type="text"
+                name="fontLink"
+                value={selectedOptions.fontLink}
+                onChange={handleChange}
+              />
+            
+            <ToggleButtonGroup
+              color="primary"
+              value={selectedOptions.logoDesign}
+              exclusive
+              onChange={handleLogoDesign}
+              name="logoDesign"
+              aria-label="logoDesign"
+              defaultValue={true}
+            >
+              <ToggleButton value="" disabled>logoDesign</ToggleButton>
+              <ToggleButton value={true}>YES</ToggleButton>
+              <ToggleButton value={false}>NO</ToggleButton>
+              </ToggleButtonGroup>
+            {selectedOptions.logoDesign === false &&  <IconButton color="primary" aria-label="upload picture" component="label" sx={{ width: 300 }}>
+                <input hidden accept="image/*" type="file" />
+                UPLOAD YOUR LOGO
+                <PhotoCamera />
+              </IconButton>}
+            
 
 
-                  <IconButton color="primary" aria-label="upload picture" component="label">
-                    <input hidden accept="image/*" type="file" />
-                    UPLOAD YOUR LOGO
-                    <PhotoCamera />
-                  </IconButton>
-                </ToggleButtonGroup>
+
 
 
 
@@ -501,47 +521,60 @@ const Premium = () => {
                   </div>}
                 </Form.Group>
                 <br />
-
-                <label>
-                  Name / Company name:
-                  <input
-                    type="text"
-                    name="footageLink"
-                    value={selectedOptions.footageLink}
-                    onChange={handleChange}
-                  />
-                </label>
-                <label>
-                  E-mail:
-                  <input
-                    type="text"
-                    name="footageLink"
-                    value={selectedOptions.footageLink}
-                    onChange={handleChange}
-                  />
-                </label>
-                <label>
-                  Phone:
-                  <input
-                    type="text"
-                    name="footageLink"
-                    value={selectedOptions.footageLink}
-                    onChange={handleChange}
-                  />
-                </label>
-
-
               </form>
 
             </div>
 
+            <div className='cart-container'>
+              <h2 className='register-heading'>Total</h2>
+              <p>Selected Options:</p>
+              <ul>
+                {selectedOptions.format && (
+                  <li> Format {selectedOptions.format} - {getPrice(selectedOptions.format)} EUR</li>
+                )}{selectedOptions.animation && (
+                  <>
+                    <li> Animation {selectedOptions.animation} - {getPrice(selectedOptions.animation)} EUR</li>
+                    <li> Video length {selectedOptions.videoLength} sek - {getPrice(selectedOptions.videoLength)} EUR</li>
+                  </>
+                )}
+                {selectedOptions.logoDesign && <li>Logo Design {getPrice('logoDesign')} EUR</li>}
+                {selectedOptions.footageLink && (
+                  <li>Footage Link: {selectedOptions.footageLink}</li>
+                )}
+                {selectedOptions.needVideographer && <li>Need a Videographer {getPrice('needVideographer')} EUR</li>}
+                {selectedOptions.soundDesign && <li>Sound Design {getPrice('soundDesign')} EUR</li>}
+                {selectedOptions.voiceOver &&
+                  <>
+                    <li>Voice Over {getPrice('voiceOver')} EUR</li>
+                    <li>Voice: {selectedOptions.voice}</li>
+                    <li>Voice Style: {selectedOptions.voiceStyle}</li>
+                  </>
+                }
+                {selectedOptions.language && <li>Language: {selectedOptions.language}</li>}
+              </ul>
+              <p>Price: {getTotalPrice()} EUR</p>
 
+              <div>
+
+                <button className="button-explore" onClick={handlePopupOpen}>Confirm and Pay</button>
+                {showPopup && (
+                  <OrderSummaryPopup
+                    selectedOptions={selectedOptions}
+                    onClose={handlePopupClose}
+                    getPrice={getPrice}
+                    getTotalPrice={getTotalPrice}
+                    cart_sum={getTotalPrice}
+                  />
+                )}
+              </div>
+            </div>
           </div>
 
         </div>
 
       </div>
-      <Footer />
+
+
     </div>
 
   );

@@ -1,0 +1,60 @@
+.order-summary-popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index:20;
+  }
+  
+  .order-summary-popup-content {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    max-width: 500px;
+    z-index:100;
+  }
+  
+  .order-summary-popup h3 {
+    margin-top: 0;
+
+  }
+  
+  .order-summary-popup ul {
+    list-style-type: none;
+    padding: 0;
+    margin-top: 10px;
+
+  }
+  
+  .order-summary-popup ul li {
+    margin-bottom: 5px;
+
+  }
+  
+  .order-summary-popup button {
+    margin-top: 10px;
+    margin-left: 10%;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  
+  }
+  
+  .order-summary-form {
+    display: flex;
+    justify-content: center;
+  }
+
+  @media (max-width: 767px) {
+    .order-summary-popup {
+      z-index:10;
+    }
+  }
+
